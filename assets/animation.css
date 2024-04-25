@@ -1,0 +1,19 @@
+@keyframes gradientAnimation {
+  from {
+    transform: rotate(0deg) scale(1.4);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1.4);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

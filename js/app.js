@@ -1,45 +1,29 @@
-import Hi from "./Hi.js";
-/*返回顶部*/
-var scrollTop = Spark.Fixed({
-  style:
-    "width:50px;height:50px;border-radius:50px;padding:9px; background:blue;right:20px;bottom:20px;color:#fff;font-size:12px; text-align:center; line-height:15px;",
-  child: [Spark.Text("回到<br>顶部")],
-  on: {
-    click: function () {
-      Spark.scrollTop("top", 300, () => {}).then(() => {
-        console.log("scroll success");
-      });
-    },
-  },
-});
+import Header from "./header.js";
+import CodeList from "./codeList.js";
+import ScrollTop from "./scrollTop.js";
 
 Spark.Page({
   //定义路由信息
   link: {
     name: "page1",
     path: "/",
-    meta: {
-      title: "你好",
-    },
   },
   style:
-    "width:100%;height:10000px; min-height:" +
+    "width:100%;min-height:" +
     Spark.screen.height() +
     "px;background-color:#fff;color:#34495e;",
-  child: [Hi, scrollTop],
+  child: [Header, CodeList, ScrollTop],
   // keepalive:false,
-  created() {
-    console.log("page1 created");
-  },
-  on: {
-    click() {
-      if (Hi.text == "hello spark!") {
-        Hi.text = "hello word!";
-        this.style = "background-color:#34495e;color:#fff;";
-      } else {
-        Hi.text = "hello spark!";
-        this.style = "background-color:#fff;color:#34495e;";
-      }
+  created() {},
+});
+Spark.Page({
+  link: {
+    name: "no-page",
+    path: "*",
+    meta: {
+      title: "404 Not Found",
     },
   },
+  style: "color:#34495e;text-align:center;line-height:100px;font-size:30px;",
+  child: [Spark.Text("404 Not Found")],
 });
