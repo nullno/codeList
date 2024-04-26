@@ -1,7 +1,7 @@
 import Header from "./header.js";
 import CodeList from "./codeList.js";
 import ScrollTop from "./scrollTop.js";
-
+//
 Spark.Page({
   //定义路由信息
   link: {
@@ -9,9 +9,7 @@ Spark.Page({
     path: "/",
   },
   style:
-    "width:100%;min-height:" +
-    Spark.screen.height() +
-    "px;background-color:#fff;color:#34495e;",
+    "width:100%;padding-bottom:50px; background-color:#fff;background:#fff url(./assets/mountain.png) repeat-x;overflow:hidden;animation: bgMove 100s linear infinite;",
   child: [Header, CodeList, ScrollTop],
   // keepalive:false,
   created() {},

@@ -1,13 +1,21 @@
 @keyframes gradientAnimation {
   from {
-    transform: rotate(0deg) scale(1.4);
+    transform: rotate(0deg) scale(1.5);
   }
 
   to {
-    transform: rotate(360deg) scale(1.4);
+    transform: rotate(360deg) scale(1.5);
   }
 }
 
+@keyframes bgMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 0;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

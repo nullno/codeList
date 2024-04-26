@@ -4,7 +4,7 @@ const logo = Spark.Box({
   child: [
     Spark.Box({
       style:
-        "width:200%;height:200%;position:absolute;top:-50%;left:-50%;z-index:0;background-image:linear-gradient(90deg, #e037ff 0, #00F9E5 100%);background-size: 100% 100%; animation: gradientAnimation 3s linear infinite both;",
+        "width:150%;height:250%;position:absolute;top:-50%;left:-25%;z-index:0;background-image:linear-gradient(90deg, #e037ff 0, #00F9E5 100%);background-size: 100% 100%; animation: gradientAnimation 3s linear infinite both;",
     }),
     Spark.Text("CodeList", {
       style: "position:relative;z-index:1;",
@@ -19,14 +19,14 @@ const searchButton = Spark.Text("🔍", {
 
 const searchInput = Spark.Input({
   style:
-    "width:500px;height:100%;line-height:40px;border:0;padding:5px;color:#666;font-size:18px;font-weight:500;padding:0;",
+    "width:70%;max-width:500px;height:100%;line-height:43px;border:0;padding:5px;color:#666;font-size:18px;font-weight:500;padding:0;",
   onStyle: "box-shadow:unset;color:#666;",
   placeholder: "Search code...",
 });
 
 const searchBox = Spark.Box({
   style:
-    "width:600px;height:50px;margin:20px auto;padding:3px;background:#fff; border-radius:6px;border:1px solid rgba(0,0,0,0.3); display:flex;justify-content:space-between;align-items:center;",
+    "width:95%;max-width:600px;height:50px;margin:40px auto;padding:3px;background:#fff; border-radius:6px;border:1px solid rgba(0,0,0,0.3); display:flex;justify-content:space-between;align-items:center;",
   child: [logo, searchInput, searchButton],
 });
 
