@@ -1,6 +1,7 @@
 import Header from "./header.js";
 import CodeList from "./codeList.js";
 import ScrollTop from "./scrollTop.js";
+import Toast from "./toast.js";
 //
 Spark.Page({
   //定义路由信息
@@ -10,7 +11,7 @@ Spark.Page({
   },
   style:
     "width:100%;padding-bottom:50px; background-color:#fff;background:#fff url(./assets/mountain.png) repeat-x;overflow:hidden;animation: bgMove 100s linear infinite;",
-  child: [Header, CodeList, ScrollTop],
+  child: [Header, CodeList, Toast, ScrollTop],
   // keepalive:false,
   created() {},
 });

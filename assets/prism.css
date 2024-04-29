@@ -10,11 +10,11 @@ pre[class*="language-"]::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   position: fixed;
-  background: #343541;
+  background: #12131b;
 }
 pre[class*="language-"]::-webkit-scrollbar-track {
   width: 5px;
-  background: #343541;
+  background: #12131b;
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
   border-radius: 2em;
@@ -31,7 +31,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
   background-color: #ccc;
 }
 pre[class*="language-"]::-webkit-scrollbar-corner {
-  background: #343541;
+  background: #12131b;
 }
 
 code[class*="language-"],
@@ -67,7 +67,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #343541;
+  background: #12131b;
 }
 
 /* Inline code */

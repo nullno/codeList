@@ -56,7 +56,7 @@ const codeTagList = Spark.List({
     return Spark.Box({
       tag: "li",
       className: tagStyle,
-      child: [Spark.Text(item, { listIndex: true })],
+      child: [Spark.Text(item)],
       shover: "color:#7566F9;",
       init() {
         if (this.listIndex === codeTagList.data.length - 1) {
