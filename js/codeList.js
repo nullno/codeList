@@ -121,6 +121,14 @@ pre[class*="language-"] {
     `,
     },
     { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "php", code: `` },
   ],
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",

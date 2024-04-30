@@ -1,7 +1,7 @@
 /*返回顶部*/
 export default Spark.Fixed({
   style:
-    "background:transparent;right:20px;bottom:20px;font-size:30px;text-align:center;transform:rotate(-45deg);",
+    "background:transparent;right:26px;bottom:100px;font-size:30px;text-align:center;transform:rotate(-45deg);",
   child: [Spark.Text("🚀")],
   show: false,
   created() {

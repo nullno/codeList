@@ -3,7 +3,7 @@ import Share from "./share.js";
 const TipText = Spark.Text("");
 const Toast = Spark.Modal({
   style:
-    "font-size:16px;line-height:20px;color:#fff;padding:5px 10px;background:#343541;border-radius:5px;overflow:hidden;",
+    "font-size:16px;line-height:20px;color:#1ED760;padding:5px 10px;background:#343541;border-radius:5px;overflow:hidden;",
   showAni: { ani: "fadeInUp 100ms  both" },
   hideAni: { ani: "fadeOutDown 100ms both", time: 100 },
   bgClose: true, //点击任意可关闭 默认false
