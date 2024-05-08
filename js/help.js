@@ -19,7 +19,7 @@ const BackButton = Spark.Box({
     "width:30px;height:30px;position:absolute;top:40px;right:10px;background:url(./assets/icon-back.svg)  no-repeat 100% / cover;;border:none;cursor:pointer;",
   on: {
     click() {
-      Spark.router.go(-1);
+      Spark.router.back();
     },
   },
 });
