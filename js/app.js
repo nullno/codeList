@@ -34,6 +34,7 @@ Spark.Page({
     meta: {
       title: "CodeList-help",
     },
+    recordLastPosition: false,
   },
   style:
     "width:100%;min-height:100vh; padding-bottom:50px; background-color:#fff;background:#fff url(./assets/mountain.png) repeat-x;overflow:hidden;animation: bgMove 300s linear infinite;",
