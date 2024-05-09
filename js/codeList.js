@@ -1,8 +1,9 @@
 import Share from "./share.js";
 import { Types } from "./type.js";
-async function copyTextToClipboard(text) {
+async function copyTextToClipboard(file) {
   try {
-    await navigator.clipboard.writeText(text);
+    const content = await Spark.axios.get(file);
+    await navigator.clipboard.writeText(content.data);
     Share.Toast("Copied successfully!");
   } catch (err) {
     Share.Toast("Failed to copy, please copy manually!");
@@ -54,12 +55,14 @@ const RenderItem = (item, index) => {
     style:
       "width:100%;height:calc(100% - 30px);color:#fff;overflow:hidden;border-radius:0 0 6px 6px;padding:2px;",
     created() {
-      this.$el.innerHTML =
-        '<pre><code class="language-' +
-        item.language +
-        '">' +
-        item.code +
-        "</code></pre>";
+      // const language = item.language !== "HTML/CSS" ? item.language : "html";
+      // this.$el.innerHTML =
+      //   '<pre><code class="language-' +
+      //   language +
+      //   '">' +
+      //   item.code +
+      //   "</code></pre>";
+      this.$el.innerHTML = `<pre data-src="${item.code}"></pre>`;
       Prism.highlightAll();
     },
   });
@@ -94,43 +97,33 @@ const CodeList = Spark.List({
     {
       title: "js获取链接参数",
       language: "JavaScript",
-      code: `
-      /**
- * 类型检测
- * @param {*} data 数据
- * @param {string} type 检测类型
- * @returns {String}
- */
-function _typeof(data, type) {
-  return Object.prototype.toString.call(data) === "[object " + type + "]";
-};
-      `,
+      code: "./codeFiles/javascript/typeCheck.js",
     },
     {
-      title: "防抖函数",
+      title: "左右布局",
       language: "HTML/CSS",
-      code: `
-    /* Code blocks */
-pre[class*="language-"] {
-  padding: 1em;
-  overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: #12131b;
-}
-    `,
+      code: "./codeFiles/html/demo.html",
     },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
-    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    {
+      title: "java链接数据库",
+      language: "Java",
+      code: "./codeFiles/java/test.java",
+    },
+    {
+      title: "js获取链接参数",
+      language: "JavaScript",
+      code: "./codeFiles/javascript/typeCheck.js",
+    },
+    {
+      title: "左右布局",
+      language: "HTML/CSS",
+      code: "./codeFiles/html/demo.html",
+    },
+    {
+      title: "java链接数据库",
+      language: "Java",
+      code: "./codeFiles/java/test.java",
+    },
   ],
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",

@@ -1,4 +1,4 @@
-import { TypesList } from "./type.js";
+import { Types, TypesList } from "./type.js";
 
 const logo = Spark.Box({
   style:
@@ -33,26 +33,40 @@ const searchBox = Spark.Box({
 });
 
 var tagStyle = Spark.Css(
-  "padding:0 20px;margin-bottom:20px;display:inline-block; border-right:1px solid rgba(0,0,0,0.3);"
+  "padding:0 20px;margin-bottom:20px;display:inline-block;border-radius:20px;"
 );
 
 const codeTagList = Spark.List({
   data: TypesList,
   style: "text-align:center; margin:0 auto;",
+  selected(activeIndex) {
+    TypesList.forEach((e, index) => {
+      const curItem = this.getChild(index);
+      curItem.style = `background-color:transparent;color:${Types[e].color};`;
+      if (activeIndex === index) {
+        curItem.style = `background-color:${
+          Types[localStorage.selectCodeType].color
+        }};color:#fff;`;
+      }
+    });
+  },
   item(item, index) {
+    const typeColor = Types[item].color;
     return Spark.Box({
       tag: "li",
       className: tagStyle,
+      style: `color:${typeColor};`,
       child: [Spark.Text(item)],
-      shover: "color:#7566F9;",
+      // shover: "transform:scale(1.1);",
       init() {
-        if (this.listIndex === codeTagList.data.length - 1) {
-          this.style = "border:0;";
+        if (item === localStorage.selectCodeType) {
+          this.style = `background-color:${typeColor}};color:#fff;`;
         }
       },
       on: {
         click() {
-          alert(item);
+          localStorage.selectCodeType = TypesList[this.listIndex];
+          codeTagList.selected(this.listIndex);
         },
       },
     });

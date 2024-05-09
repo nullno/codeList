@@ -3,14 +3,14 @@ import Share from "./share.js";
 const TipText = Spark.Text("");
 const Toast = Spark.Modal({
   style:
-    "font-size:16px;line-height:20px;color:#1ED760;padding:5px 10px;background:#343541;border-radius:5px;overflow:hidden;",
+    "font-size:16px;line-height:20px;color:#fff;padding:5px 10px;background:#343541;border-radius:5px;overflow:hidden;",
   showAni: { ani: "fadeInUp 100ms  both" },
   hideAni: { ani: "fadeOutDown 100ms both", time: 100 },
   bgClose: true, //点击任意可关闭 默认false
   // bgColor:'rgba(255,255,255,0.5)',//背景颜色 默认rgba(0,0,0,0.5)
   bgShow: false, //是否有背景 默认false
   drag: false, //是否可拖动 默认false
-  position: "bottomright", //topcener/topleft/topright/bottomcenter/bottomleft/bottomright 默认center
+  position: "bottomcenter", //topcener/topleft/topright/bottomcenter/bottomleft/bottomright 默认center
   // positionMargin:'3%', //距离边距间距 默认3%
   autoClose: 1500, //设置毫秒延时自动关闭，默认不false
   child: [TipText],
