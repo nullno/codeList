@@ -1,3 +1,5 @@
+import { TypesList } from "./type.js";
+
 const logo = Spark.Box({
   style:
     "width:120px;height:40px;position:relative;overflow:hidden;border-radius:6px;text-align:center;line-height:40px;font-weight:bold;font-size:20px;color:#fff;user-select:none;",
@@ -35,22 +37,7 @@ var tagStyle = Spark.Css(
 );
 
 const codeTagList = Spark.List({
-  data: [
-    "html/css",
-    "javascript",
-    "java",
-    "python",
-    "c++",
-    "go",
-    "kotlin",
-    "swift",
-    "php",
-    "dart",
-    "ruby",
-    "R",
-    "数据库",
-    "运维",
-  ],
+  data: TypesList,
   style: "text-align:center; margin:0 auto;",
   item(item, index) {
     return Spark.Box({

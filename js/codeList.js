@@ -1,4 +1,5 @@
 import Share from "./share.js";
+import { Types } from "./type.js";
 async function copyTextToClipboard(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -13,6 +14,19 @@ const listStyle = Spark.Css(
 );
 
 const RenderItem = (item, index) => {
+  const itemColor = Types[item.language].color || "#7396F3";
+  const Title = Spark.Text(Types[item.language].icon + " " + item.title, {
+    tag: "h2",
+    style:
+      "color:" +
+      itemColor +
+      ";line-height:20px;padding:0 5px;font-weight:normal;border-radius:3px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;",
+    on: {
+      hover() {
+        this.$el.title = item.title;
+      },
+    },
+  });
   const codeHeader = Spark.Box({
     style:
       "width:;100%;height: 30px;padding:0 8px; align-items:center;background-color: #343541;display: flex;flex-direction: row;flex-shrink: 0;justify-content: space-between;border-radius:6px 6px 0 0;",
@@ -52,26 +66,14 @@ const RenderItem = (item, index) => {
 
   const codeView = Spark.Box({
     style:
-      "width:100%;height:300px;margin:10px 0;background-color:#12131b;border-radius:6px;",
+      "width:100%;height:300px;margin:5px 0;background-color:#12131b;border-radius:6px;",
     child: [codeHeader, codePre],
   });
 
   const codeItem = Spark.Box({
     style:
-      "width:100%;height:100%;padding:15px;background-color:#fff;border-radius:10px;box-shadow:0 0 3px rgba(0, 0, 0, .2);",
-    child: [
-      Spark.Text(item.title, {
-        tag: "h2",
-        style:
-          "line-height:20px;font-weight:normal; color:#343541;font-size:16px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;",
-        on: {
-          hover() {
-            this.$el.title = item.title;
-          },
-        },
-      }),
-      codeView,
-    ],
+      "width:100%;height:100%;padding:10px;background-color:#fff;border-radius:10px;box-shadow:0 0 3px rgba(0, 0, 0, .2);",
+    child: [Title, codeView],
   });
 
   return Spark.Box({
@@ -91,7 +93,7 @@ const CodeList = Spark.List({
   data: [
     {
       title: "js获取链接参数",
-      language: "javascript",
+      language: "JavaScript",
       code: `
       /**
  * 类型检测
@@ -106,7 +108,7 @@ function _typeof(data, type) {
     },
     {
       title: "防抖函数",
-      language: "css",
+      language: "HTML/CSS",
       code: `
     /* Code blocks */
 pre[class*="language-"] {
@@ -120,15 +122,15 @@ pre[class*="language-"] {
 }
     `,
     },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
 
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
-    { title: "数据库模糊匹配查找", language: "php", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
+    { title: "数据库模糊匹配查找", language: "PHP", code: `` },
   ],
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",
