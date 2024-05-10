@@ -30,7 +30,7 @@ const RenderItem = (item, index) => {
   });
   const codeHeader = Spark.Box({
     style:
-      "width:;100%;height: 30px;padding:0 8px; align-items:center;background-color: #343541;display: flex;flex-direction: row;flex-shrink: 0;justify-content: space-between;border-radius:6px 6px 0 0;",
+      "width:100%;height: 30px;padding:0 8px; align-items:center;background-color: #343541;display: flex;flex-direction: row;flex-shrink: 0;justify-content: space-between;border-radius:6px 6px 0 0;",
     child: [
       Spark.Text(item.language, {
         style: "font-size: 14px;color:hsla(0, 0%, 100%, .7);padding-left:10px;",

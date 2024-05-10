@@ -57,7 +57,7 @@ const codeTagList = Spark.List({
       className: tagStyle,
       style: `color:${typeColor};`,
       child: [Spark.Text(item)],
-      // shover: "transform:scale(1.1);",
+      shover: "transform:scale(1.1);",
       init() {
         if (item === localStorage.selectCodeType) {
           this.style = `background-color:${typeColor}};color:#fff;`;
