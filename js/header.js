@@ -1,3 +1,4 @@
+import Share from "./share.js";
 import { Types, TypesList } from "./type.js";
 
 const logo = Spark.Box({
@@ -67,6 +68,7 @@ const codeTagList = Spark.List({
         click() {
           localStorage.selectCodeType = TypesList[this.listIndex];
           codeTagList.selected(this.listIndex);
+          Share.CodeList.filter(localStorage.selectCodeType);
         },
       },
     });

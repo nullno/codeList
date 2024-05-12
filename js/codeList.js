@@ -11,17 +11,14 @@ async function copyTextToClipboard(file) {
 }
 
 const listStyle = Spark.Css(
-  "width:33.3%;height:400px;float:left;padding:10px;overflow:hidden;cursor: unset;"
+  "width:33.3%;height:365px;float:left;padding:10px;overflow:hidden;cursor: unset;"
 );
 
 const RenderItem = (item, index) => {
   const itemColor = Types[item.language].color || "#7396F3";
   const Title = Spark.Text(Types[item.language].icon + " " + item.title, {
     tag: "h2",
-    style:
-      "color:" +
-      itemColor +
-      ";line-height:20px;padding:0 5px;font-weight:normal;border-radius:3px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;",
+    style: `color:${itemColor};line-height:20px;font-weight:normal;border-radius:3px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;`,
     on: {
       hover() {
         this.$el.title = item.title;
@@ -91,44 +88,53 @@ const RenderItem = (item, index) => {
     },
   });
 };
-
+const testData = [
+  {
+    title: "js获取链接参数",
+    language: "JavaScript",
+    code: "./codeFiles/javascript/typeCheck.js",
+  },
+  {
+    title: "左右布局",
+    language: "HTML/CSS",
+    code: "./codeFiles/html/demo.html",
+  },
+  {
+    title: "java链接数据库",
+    language: "Java",
+    code: "./codeFiles/java/test.java",
+  },
+  {
+    title: "js获取链接参数",
+    language: "JavaScript",
+    code: "./codeFiles/javascript/typeCheck.js",
+  },
+  {
+    title: "左右布局",
+    language: "HTML/CSS",
+    code: "./codeFiles/html/demo.html",
+  },
+  {
+    title: "java链接数据库",
+    language: "Java",
+    code: "./codeFiles/java/test.java",
+  },
+];
 const CodeList = Spark.List({
-  data: [
-    {
-      title: "js获取链接参数",
-      language: "JavaScript",
-      code: "./codeFiles/javascript/typeCheck.js",
-    },
-    {
-      title: "左右布局",
-      language: "HTML/CSS",
-      code: "./codeFiles/html/demo.html",
-    },
-    {
-      title: "java链接数据库",
-      language: "Java",
-      code: "./codeFiles/java/test.java",
-    },
-    {
-      title: "js获取链接参数",
-      language: "JavaScript",
-      code: "./codeFiles/javascript/typeCheck.js",
-    },
-    {
-      title: "左右布局",
-      language: "HTML/CSS",
-      code: "./codeFiles/html/demo.html",
-    },
-    {
-      title: "java链接数据库",
-      language: "Java",
-      code: "./codeFiles/java/test.java",
-    },
-  ],
+  data: [],
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",
   item(item, index) {
     return RenderItem(item, index);
+  },
+  filter(type) {
+    this.clear();
+    const tempData = testData.filter((item) => {
+      return type == "Java"
+        ? type === item.language
+        : item.language.includes(type);
+    });
+    this.insertLast(tempData);
   },
   resizeList() {
     Spark.Util.screen.resize((screen) => {
@@ -144,8 +150,14 @@ const CodeList = Spark.List({
     });
   },
   created() {
+    if (localStorage.selectCodeType) {
+      this.filter(localStorage.selectCodeType);
+    } else {
+      this.insert(0, testData);
+    }
     this.resizeList();
   },
 });
 
+Share.CodeList = CodeList;
 export default CodeList;

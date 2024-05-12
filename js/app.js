@@ -3,6 +3,7 @@ import CodeList from "./codeList.js";
 import ScrollTop from "./scrollTop.js";
 import Toast from "./toast.js";
 import Help from "./help.js";
+import Copyright from "./copyright.js";
 
 const HelpBtn = Spark.Fixed({
   style: {
@@ -27,11 +28,12 @@ const PageStyle = Spark.Css({
   background: "#fff url(./assets/mountain.png) repeat-x",
   overflow: "hidden",
   animation: "bgMove 300s linear infinite",
+  minHeight: "100vh",
 });
 Spark.Page({
   link: { name: "home", path: "/" },
   className: PageStyle,
-  child: [Header, CodeList, Toast, HelpBtn, ScrollTop],
+  child: [Header, CodeList, Copyright, Toast, HelpBtn, ScrollTop],
   created() {},
 });
 Spark.Page({
@@ -44,7 +46,7 @@ Spark.Page({
     recordLastPosition: false,
   },
   className: PageStyle,
-  child: [Help, ScrollTop],
+  child: [Help, Copyright, ScrollTop],
 });
 Spark.Page({
   link: {

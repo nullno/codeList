@@ -2,8 +2,16 @@ import Share from "./share.js";
 
 const TipText = Spark.Text("");
 const Toast = Spark.Modal({
-  style:
-    "font-size:16px;line-height:20px;color:#fff;padding:5px 10px;background:#343541;border-radius:5px;overflow:hidden;",
+  style: {
+    fontSize: "16px",
+    lineHeight: "20px",
+    color: "#fff",
+    padding: "5px 10px",
+    backgroundColor: "#198ce7",
+    borderRadius: "5px",
+    overflow: "hidden",
+    display: "flex",
+  },
   showAni: { ani: "fadeInUp 100ms  both" },
   hideAni: { ani: "fadeOutDown 100ms both", time: 100 },
   bgClose: true, //点击任意可关闭 默认false
