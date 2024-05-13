@@ -1,5 +1,6 @@
 import Share from "./share.js";
 import { Types } from "./type.js";
+
 async function copyTextToClipboard(file) {
   try {
     const content = await Spark.axios.get(file);
@@ -14,7 +15,7 @@ const listStyle = Spark.Css(
   "width:33.3%;height:365px;float:left;padding:10px;overflow:hidden;cursor: unset;"
 );
 
-const RenderItem = (item, index) => {
+export const RenderItem = (item, index) => {
   const itemColor = Types[item.language].color || "#7396F3";
   const Title = Spark.Text(Types[item.language].icon + " " + item.title, {
     tag: "h2",
@@ -65,16 +66,39 @@ const RenderItem = (item, index) => {
   });
 
   const codeView = Spark.Box({
-    style:
-      "width:100%;height:300px;margin:5px 0;background-color:#12131b;border-radius:6px;",
+    style: `width:100%;height:${
+      index === "noTalk" ? "455px" : "300px"
+    };margin:5px 0;background-color:#12131b;border-radius:6px;`,
     child: [codeHeader, codePre],
   });
-
-  const codeItem = Spark.Box({
-    style:
-      "width:100%;height:100%;padding:10px;background-color:#fff;border-radius:10px;box-shadow:0 0 3px rgba(0, 0, 0, .2);",
-    child: [Title, codeView],
+  const talkBtn = Spark.Box({
+    tag: "button",
+    style: {
+      width: "25px",
+      height: "25px",
+      background: "url(../assets/icon-talk.svg)",
+      backgroundSize: "100%",
+      position: "absolute",
+      bottom: "15px",
+      right: "15px",
+      border: "0",
+      cursor: "pointer",
+    },
+    on: {
+      click() {
+        Share.Talk(item);
+      },
+    },
   });
+  const codeItem = Spark.Box({
+    style: `position:relative;width:100%;height:100%;padding:10px;background-color:#fff;border-radius:10px;box-shadow:${
+      index === "noTalk" ? "unset" : "0 0 3px rgba(0, 0, 0, .2"
+    });`,
+    child: [Title, codeView, index !== "noTalk" ? talkBtn : null],
+  });
+  if (index === "noTalk") {
+    return codeItem;
+  }
 
   return Spark.Box({
     tag: "li",
@@ -160,4 +184,5 @@ const CodeList = Spark.List({
 });
 
 Share.CodeList = CodeList;
+
 export default CodeList;
