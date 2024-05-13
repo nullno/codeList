@@ -76,7 +76,7 @@ export const RenderItem = (item, index) => {
     style: {
       width: "25px",
       height: "25px",
-      background: "url(../assets/icon-talk.svg)",
+      background: "url(./assets/icon-talk.svg)",
       backgroundSize: "100%",
       position: "absolute",
       bottom: "15px",

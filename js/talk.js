@@ -8,10 +8,11 @@ const CodeView = Spark.Box({
 });
 const Comment = Spark.Box({
   style: {
-    width: "50%",
-    height: "100%",
-    paddingRight: "15px",
+    width: "49%",
+    height: "455px",
+    padding: "0 5px",
     overflow: "auto",
+    marginTop: "35px",
   },
 });
 const CloseBtn = Spark.Box({
@@ -19,13 +20,14 @@ const CloseBtn = Spark.Box({
   style: {
     width: "15px",
     height: "15px",
-    background: "url(../assets/icon-close.svg)",
+    background: "url(./assets/icon-close.svg)",
     backgroundSize: "100%",
     position: "absolute",
     top: "15px",
     right: "15px",
     border: "0",
     cursor: "pointer",
+    zIndex: "9",
   },
   on: {
     click() {
@@ -45,13 +47,12 @@ const Talk = Spark.Modal({
     overflow: "hidden",
     display: "flex",
   },
-
   bgClose: true, //点击任意可关闭 默认false
-  // bgColor:'rgba(255,255,255,0.5)',//背景颜色 默认rgba(0,0,0,0.5)
   bgShow: true, //是否有背景 默认false
   child: [CodeView, Comment, CloseBtn],
   onClose() {
     Spark.remove(CodeView, 0);
+    Comment.$el.innerHTML = "";
   },
 });
 

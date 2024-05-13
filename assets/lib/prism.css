@@ -199,7 +199,7 @@ pre[class*="language-"] {
   background-color: transparent;
   border-radius: 0;
 }
-.markdown-content a{
+.markdown-content a {
   color: #428bca;
   text-decoration: none;
 }
@@ -216,4 +216,11 @@ pre[class*="language-"] {
 .markdown-content table > tbody > tr:nth-child(odd) > td,
 .markdown-content table > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
+}
+
+.gt-container .gt-meta {
+  margin: unset;
+  padding: unset;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
