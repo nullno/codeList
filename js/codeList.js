@@ -112,6 +112,12 @@ export const RenderItem = (item, index) => {
     },
   });
 };
+
+const getCodeFile = async (type) => {
+  const Res = await Spark.axios.get(
+    "https://api.github.com/repositories/790625047/contents/codeFiles/" + type
+  );
+};
 const testData = [
   {
     title: "js获取链接参数",
@@ -174,6 +180,7 @@ const CodeList = Spark.List({
     });
   },
   created() {
+    getCodeFile("html");
     if (localStorage.selectCodeType) {
       this.filter(localStorage.selectCodeType);
     } else {

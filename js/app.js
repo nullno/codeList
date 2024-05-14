@@ -24,7 +24,7 @@ const HelpBtn = Spark.Fixed({
 });
 const PageStyle = Spark.Css({
   width: "100%",
-  paddingBottom: "50px",
+  paddingBottom: "70px",
   backgroundColor: "#fff",
   background: "#fff url(./assets/mountain.png) repeat-x",
   overflow: "hidden",

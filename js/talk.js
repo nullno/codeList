@@ -54,6 +54,23 @@ const Talk = Spark.Modal({
     Spark.remove(CodeView, 0);
     Comment.$el.innerHTML = "";
   },
+  created() {
+    this.child.length != 1 &&
+      Spark.Util.screen.resize((screen) => {
+        if (screen.width < 700) {
+          this.style = `width:100%;height:100%;transform:unset;flex-direction: column;margin-left:0px;left:0;top:0;margin-top:0;border-radius:0;`;
+          CodeView.style = `display:none;`;
+          Comment.style = `width:100%;height:100%;`;
+        } else {
+          let rate = screen.width / 1000 - 0.1;
+          this.style = `width:1000px;height:500px;margin-left:-500px;margin-top:-250px;left:50%;top:50%;flex-direction: unset;border-radius:5px;transform:scale(${
+            rate > 1 ? 1 : rate
+          });`;
+          CodeView.style = `display:block;`;
+          Comment.style = `width:49%;height:455px;`;
+        }
+      });
+  },
 });
 
 Share.Talk = function (codeItem) {

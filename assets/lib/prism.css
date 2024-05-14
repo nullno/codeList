@@ -224,3 +224,6 @@ pre[class*="language-"] {
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+.gt-container .gt-user-name {
+  color: #6190e8;
+}
