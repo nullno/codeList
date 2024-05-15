@@ -1,0 +1,32 @@
+[
+    {
+        "title": "js获取链接参数",
+        "language": "JavaScript",
+        "code": "./codeFiles/javascript/typeCheck.js"
+    },
+    {
+        "title": "左右布局",
+        "language": "HTML/CSS",
+        "code": "./codeFiles/html/demo.html"
+    },
+    {
+        "title": "java链接数据库",
+        "language": "Java",
+        "code": "./codeFiles/java/test.java"
+    },
+    {
+        "title": "js获取链接参数",
+        "language": "JavaScript",
+        "code": "./codeFiles/javascript/typeCheck.js"
+    },
+    {
+        "title": "左右布局",
+        "language": "HTML/CSS",
+        "code": "./codeFiles/html/demo.html"
+    },
+    {
+        "title": "java链接数据库",
+        "language": "Java",
+        "code": "./codeFiles/java/test.java"
+    }
+]
