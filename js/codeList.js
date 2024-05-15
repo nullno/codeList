@@ -10,27 +10,31 @@ async function copyTextToClipboard(file) {
     Share.Toast("Failed to copy, please copy manually!");
   }
 }
+function getFileExtension(fileName) {
+  const extension = fileName.match(/\.([^.]+)$/);
+  return extension ? extension[1] : "";
+}
 
 const listStyle = Spark.Css(
   "width:33.3%;height:365px;float:left;padding:10px;overflow:hidden;cursor: unset;"
 );
 
 export const RenderItem = (item, index) => {
-  const itemColor = Types[item.language].color || "#7396F3";
-  const Title = Spark.Text(Types[item.language].icon + " " + item.title, {
-    tag: "h2",
-    style: `color:${itemColor};line-height:20px;font-weight:normal;border-radius:3px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;`,
-    on: {
-      hover() {
-        this.$el.title = item.title;
-      },
-    },
-  });
+  // const itemColor = Types[item.language].color || "#7396F3";
+  // const Title = Spark.Text(Types[item.language].icon + " " + item.title, {
+  //   tag: "h2",
+  //   style: `color:${itemColor};line-height:20px;font-weight:normal;border-radius:3px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;`,
+  //   on: {
+  //     hover() {
+  //       this.$el.title = item.title;
+  //     },
+  //   },
+  // });
   const codeHeader = Spark.Box({
     style:
       "width:100%;height: 30px;padding:0 8px; align-items:center;background-color: #343541;display: flex;flex-direction: row;flex-shrink: 0;justify-content: space-between;border-radius:6px 6px 0 0;",
     child: [
-      Spark.Text(item.language, {
+      Spark.Text(getFileExtension(item.name), {
         style: "font-size: 14px;color:hsla(0, 0%, 100%, .7);padding-left:10px;",
       }),
       Spark.Box({
@@ -53,22 +57,15 @@ export const RenderItem = (item, index) => {
     style:
       "width:100%;height:calc(100% - 30px);color:#fff;overflow:hidden;border-radius:0 0 6px 6px;padding:2px;",
     created() {
-      // const language = item.language !== "HTML/CSS" ? item.language : "html";
-      // this.$el.innerHTML =
-      //   '<pre><code class="language-' +
-      //   language +
-      //   '">' +
-      //   item.code +
-      //   "</code></pre>";
-      this.$el.innerHTML = `<pre data-src="${item.code}"></pre>`;
+      this.$el.innerHTML = `<pre data-src="${item.path}"></pre>`;
       Prism.highlightAll();
     },
   });
 
   const codeView = Spark.Box({
     style: `width:100%;height:${
-      index === "noTalk" ? "455px" : "300px"
-    };margin:5px 0;background-color:#12131b;border-radius:6px;`,
+      index === "noTalk" ? "480px" : "325px"
+    };background-color:#12131b;border-radius:6px;`,
     child: [codeHeader, codePre],
   });
   const talkBtn = Spark.Box({
@@ -94,7 +91,7 @@ export const RenderItem = (item, index) => {
     style: `position:relative;width:100%;height:100%;padding:10px;background-color:#fff;border-radius:10px;box-shadow:${
       index === "noTalk" ? "unset" : "0 0 3px rgba(0, 0, 0, .2"
     });`,
-    child: [Title, codeView, index !== "noTalk" ? talkBtn : null],
+    child: [codeView, index !== "noTalk" ? talkBtn : null],
   });
   if (index === "noTalk") {
     return codeItem;
@@ -103,68 +100,26 @@ export const RenderItem = (item, index) => {
   return Spark.Box({
     tag: "li",
     className: listStyle,
-    showAni: { ani: "fadeIn 500ms  both" },
+    // showAni: { ani: "fadeIn 500ms  both" },
     child: [codeItem],
-    on: {
-      click() {
-        // alert(item.b);
-      },
-    },
   });
 };
 
-const getCodeFile = async (type) => {
-  const Res = await Spark.axios.get(
-    "https://api.github.com/repositories/790625047/contents/codeFiles/" + type
-  );
-};
-const testData = [
-  {
-    title: "js获取链接参数",
-    language: "JavaScript",
-    code: "./codeFiles/javascript/typeCheck.js",
-  },
-  {
-    title: "左右布局",
-    language: "HTML/CSS",
-    code: "./codeFiles/html/demo.html",
-  },
-  {
-    title: "java链接数据库",
-    language: "Java",
-    code: "./codeFiles/java/test.java",
-  },
-  {
-    title: "js获取链接参数",
-    language: "JavaScript",
-    code: "./codeFiles/javascript/typeCheck.js",
-  },
-  {
-    title: "左右布局",
-    language: "HTML/CSS",
-    code: "./codeFiles/html/demo.html",
-  },
-  {
-    title: "java链接数据库",
-    language: "Java",
-    code: "./codeFiles/java/test.java",
-  },
-];
 const CodeList = Spark.List({
   data: [],
+  search: {
+    page: 1,
+    pageSize: 10,
+    keyword: "",
+  },
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",
   item(item, index) {
     return RenderItem(item, index);
   },
-  filter(type) {
-    this.clear();
-    const tempData = testData.filter((item) => {
-      return type == "Java"
-        ? type === item.language
-        : item.language.includes(type);
-    });
-    this.insertLast(tempData);
+  created() {
+    this.resizeList();
+    this.getCodeFile();
   },
   resizeList() {
     Spark.Util.screen.resize((screen) => {
@@ -179,14 +134,43 @@ const CodeList = Spark.List({
       }
     });
   },
-  created() {
-    getCodeFile("html");
-    if (localStorage.selectCodeType) {
-      this.filter(localStorage.selectCodeType);
-    } else {
-      this.insert(0, testData);
+  onTypeChange() {
+    this.search.page = 1;
+    this.getCodeFile(true);
+  },
+  onSearchChange(keyword) {
+    this.search.keyword = keyword;
+    this.getCodeFile(true);
+  },
+  async getCodeFile(isFlush) {
+    try {
+      const lan = localStorage.language
+        ? Types[localStorage.language].skey
+        : "";
+
+      const query = encodeURIComponent(
+        `${this.search.keyword} path:codeFiles/${lan} ${
+          lan & (lan != "normal") ? "language:" + lan : ""
+        } repo:nullno/codeList`
+      );
+      const Authorization = {
+        headers: {
+          Authorization:
+            "token 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",
+        },
+      };
+      const Res = await Spark.axios.get(
+        `https://api.github.com/search/code?page=${this.search.page}&per_page=${this.search.pageSize}&q=${query}`,
+        Authorization
+      );
+      if (!Res.data.items) {
+        throw "failed";
+      }
+      isFlush && this.clear();
+      this.insertLast(Res.data.items);
+    } catch (err) {
+      Share.Toast("Query failed!");
     }
-    this.resizeList();
   },
 });
 

@@ -18,6 +18,11 @@ const logo = Spark.Box({
 const searchButton = Spark.Text("🔍", {
   style: "font-size:20px;padding:0 10px; cursor:pointer;",
   shover: "transform:scale(1.1);",
+  on: {
+    click() {
+      Share.CodeList.onSearchChange(searchInput.value);
+    },
+  },
 });
 
 const searchInput = Spark.Input({
@@ -25,6 +30,11 @@ const searchInput = Spark.Input({
     "width:70%;max-width:500px;height:100%;line-height:43px;border:0;padding:5px;color:#666;font-size:18px;font-weight:500;padding:0;",
   onStyle: "box-shadow:unset;color:#666;",
   placeholder: "Search code...",
+  on: {
+    keyEnter() {
+      Share.CodeList.onSearchChange(searchInput.value);
+    },
+  },
 });
 
 const searchBox = Spark.Box({
@@ -46,7 +56,7 @@ const codeTagList = Spark.List({
       curItem.style = `background-color:transparent;color:${Types[e].color};`;
       if (activeIndex === index) {
         curItem.style = `background-color:${
-          Types[localStorage.selectCodeType].color
+          Types[localStorage.language].color
         }};color:#fff;`;
       }
     });
@@ -60,15 +70,21 @@ const codeTagList = Spark.List({
       child: [Spark.Text(item)],
       shover: "transform:scale(1.1);",
       init() {
-        if (item === localStorage.selectCodeType) {
+        if (item === localStorage.language) {
           this.style = `background-color:${typeColor}};color:#fff;`;
         }
       },
       on: {
         click() {
-          localStorage.selectCodeType = TypesList[this.listIndex];
-          codeTagList.selected(this.listIndex);
-          Share.CodeList.filter(localStorage.selectCodeType);
+          if (localStorage.language == TypesList[this.listIndex]) {
+            localStorage.language = "";
+            codeTagList.selected(-1);
+          } else {
+            localStorage.language = TypesList[this.listIndex];
+            codeTagList.selected(this.listIndex);
+          }
+
+          Share.CodeList.onTypeChange(localStorage.language);
         },
       },
     });

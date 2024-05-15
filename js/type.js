@@ -1,19 +1,19 @@
 const icons =
   "☀️🌞🌤⛅️🌥☁️🌦🌧❄️🌨🌩❄☀☁☄️⛈💦💧🌊💨🌫☃️🗺🏞🌅🌄🎇🎆🌇🌆🌁🌉🌌🌃🏙🏯⛵️🌅🏖🏩💒⛳⚡️🌪🌈🌠🌙🌘🌕⭐️🌟💫✨🔥💥☔️☂️🌂🌧️🌝🌡⛅🌊🌪💨☄🚧";
 export const Types = {
-  "HTML/CSS": { color: "#f16529", icon: "☀️" },
-  JavaScript: { color: "#7D8DF3", icon: "🏯" },
-  Java: { color: "#007396", icon: "🌈" },
-  Python: { color: "#3572a5", icon: "❄️" },
-  "C++": { color: "#f34b7d", icon: "🌞" },
-  Go: { color: "#00add8", icon: "🌘" },
-  Kotlin: { color: "#a9188d", icon: "🛩️" },
-  Swift: { color: "#ffac45", icon: "🍈" },
-  PHP: { color: "#4f5d95", icon: "☃️" },
-  Dart: { color: "#00b4ab", icon: "⚡️" },
-  Ruby: { color: "#701516", icon: "🌙" },
-  R: { color: "#198ce7", icon: "🎃" },
-  Database: { color: "#4b2e83", icon: "📖" },
-  Server: { color: "#28a745", icon: "🚧" },
+  "HTML/CSS": { color: "#f16529", icon: "☀️", skey: "html" },
+  JavaScript: { color: "#7D8DF3", icon: "🏯", skey: "js" },
+  Java: { color: "#007396", icon: "🌈", skey: "java" },
+  Python: { color: "#3572a5", icon: "❄️", skey: "python" },
+  "C++": { color: "#f34b7d", icon: "🌞", skey: "c++" },
+  Go: { color: "#00add8", icon: "🌘", skey: "go" },
+  Kotlin: { color: "#a9188d", icon: "🛩️", skey: "kotlin" },
+  Swift: { color: "#ffac45", icon: "🍈", skey: "swift" },
+  PHP: { color: "#4f5d95", icon: "☃️", skey: "php" },
+  Dart: { color: "#00b4ab", icon: "⚡️", skey: "dart" },
+  Ruby: { color: "#701516", icon: "🌙", skey: "ruby" },
+  R: { color: "#198ce7", icon: "🎃", skey: "r" },
+  Database: { color: "#4b2e83", icon: "📖", skey: "normal" },
+  Server: { color: "#28a745", icon: "🚧", skey: "normal" },
 };
 export const TypesList = Object.keys(Types);
