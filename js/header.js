@@ -20,7 +20,7 @@ const searchButton = Spark.Text("🔍", {
   shover: "transform:scale(1.1);",
   on: {
     click() {
-      Share.CodeList.onSearchChange(searchInput.value);
+      searchInput.confirm();
     },
   },
 });
@@ -32,7 +32,21 @@ const searchInput = Spark.Input({
   placeholder: "Search code...",
   on: {
     keyEnter() {
-      Share.CodeList.onSearchChange(searchInput.value);
+      this.confirm();
+    },
+  },
+  confirm() {
+    clearBtn.show = this.value ? true : false;
+    Share.CodeList.onSearchChange(this.value);
+  },
+});
+
+const clearBtn = Spark.Text("❌", {
+  show: false,
+  on: {
+    click() {
+      searchInput.value = "";
+      searchInput.confirm();
     },
   },
 });
@@ -40,7 +54,7 @@ const searchInput = Spark.Input({
 const searchBox = Spark.Box({
   style:
     "width:95%;max-width:600px;height:50px;margin:40px auto;padding:3px;background:#fff; border-radius:6px;border:1px solid rgba(0,0,0,0.3); display:flex;justify-content:space-between;align-items:center;",
-  child: [logo, searchInput, searchButton],
+  child: [logo, searchInput, clearBtn, searchButton],
 });
 
 var tagStyle = Spark.Css(

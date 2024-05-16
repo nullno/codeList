@@ -1,5 +1,6 @@
 import Share from "./share.js";
 import { Types } from "./type.js";
+import Loading from "./loading.js";
 
 async function copyTextToClipboard(file) {
   try {
@@ -43,7 +44,7 @@ export const RenderItem = (item, index) => {
           "width: 16px;height: 16px;background-image:url(./assets/icon-copy.svg);border:none;cursor:pointer;",
         on: {
           click() {
-            copyTextToClipboard(item.code);
+            copyTextToClipboard(item.path);
             this.style = "background-image:url(./assets/icon-right.svg);";
             setTimeout(() => {
               this.style = "background-image:url(./assets/icon-copy.svg);";
@@ -107,19 +108,14 @@ export const RenderItem = (item, index) => {
 
 const CodeList = Spark.List({
   data: [],
-  search: {
-    page: 1,
-    pageSize: 10,
-    keyword: "",
-  },
+
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",
   item(item, index) {
     return RenderItem(item, index);
   },
-  created() {
+  init() {
     this.resizeList();
-    this.getCodeFile();
   },
   resizeList() {
     Spark.Util.screen.resize((screen) => {
@@ -134,6 +130,18 @@ const CodeList = Spark.List({
       }
     });
   },
+});
+
+const CodeListMain = Spark.Box({
+  search: {
+    page: 1,
+    pageSize: 10,
+    keyword: "",
+  },
+  child: [CodeList, Loading],
+  created() {
+    this.getCodeFile();
+  },
   onTypeChange() {
     this.search.page = 1;
     this.getCodeFile(true);
@@ -144,6 +152,9 @@ const CodeList = Spark.List({
   },
   async getCodeFile(isFlush) {
     try {
+      // this.Loading
+      isFlush && CodeList.clear();
+      Loading.set(1);
       const lan = localStorage.language
         ? Types[localStorage.language].skey
         : "";
@@ -156,7 +167,7 @@ const CodeList = Spark.List({
       const Authorization = {
         headers: {
           Authorization:
-            "token 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",
+            "token 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",
         },
       };
       const Res = await Spark.axios.get(
@@ -166,14 +177,19 @@ const CodeList = Spark.List({
       if (!Res.data.items) {
         throw "failed";
       }
-      isFlush && this.clear();
-      this.insertLast(Res.data.items);
+
+      CodeList.insertLast(Res.data.items);
+      if (CodeList.data.length === 0) {
+        Loading.set(2, "No relevant code found");
+      } else {
+        Loading.set(0);
+      }
     } catch (err) {
-      Share.Toast("Query failed!");
+      console.log(err);
+      // Share.Toast("Query failed!");
+      Loading.set(2, "Query failed!");
     }
   },
 });
-
-Share.CodeList = CodeList;
-
-export default CodeList;
+Share.CodeList = CodeListMain;
+export default CodeListMain;
