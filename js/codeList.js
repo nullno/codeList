@@ -135,7 +135,7 @@ const CodeList = Spark.List({
 const CodeListMain = Spark.Box({
   search: {
     page: 1,
-    pageSize: 5,
+    pageSize: 9,
     keyword: "",
     Loading,
   },
