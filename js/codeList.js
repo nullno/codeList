@@ -1,5 +1,5 @@
 import Share from "./share.js";
-import { Types } from "./type.js";
+import { Types, gtoken } from "./type.js";
 import Loading from "./loading.js";
 
 async function copyTextToClipboard(file) {
@@ -135,23 +135,36 @@ const CodeList = Spark.List({
 const CodeListMain = Spark.Box({
   search: {
     page: 1,
-    pageSize: 10,
+    pageSize: 5,
     keyword: "",
+    Loading,
   },
   child: [CodeList, Loading],
   created() {
     this.getCodeFile();
+    document.addEventListener("scroll", () => {
+      if (
+        Spark.Util.screen.scrollTop() + Spark.Util.screen.height() ==
+        Spark.Util.screen.scrollHeight()
+      ) {
+        if (Loading.state == 1 || Loading.state == 3) return;
+        this.search.page++;
+        this.getCodeFile();
+      }
+    });
   },
   onTypeChange() {
     this.search.page = 1;
     this.getCodeFile(true);
   },
   onSearchChange(keyword) {
+    this.search.page = 1;
     this.search.keyword = keyword;
     this.getCodeFile(true);
   },
   async getCodeFile(isFlush) {
     try {
+      if (Loading.state == 1) return;
       // this.Loading
       isFlush && CodeList.clear();
       Loading.set(1);
@@ -166,8 +179,7 @@ const CodeListMain = Spark.Box({
       );
       const Authorization = {
         headers: {
-          Authorization:
-            "token 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",
+          Authorization: "token " + gtoken.join(""),
         },
       };
       const Res = await Spark.axios.get(
@@ -181,6 +193,8 @@ const CodeListMain = Spark.Box({
       CodeList.insertLast(Res.data.items);
       if (CodeList.data.length === 0) {
         Loading.set(2, "No relevant code found");
+      } else if (CodeList.data.length == Res.data.total_count) {
+        Loading.set(3, "-- All loaded --");
       } else {
         Loading.set(0);
       }

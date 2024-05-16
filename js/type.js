@@ -17,3 +17,8 @@ export const Types = {
   Server: { color: "#28a745", icon: "🚧", skey: "normal" },
 };
 export const TypesList = Object.keys(Types);
+export const gtoken = [
+  "github_pat_11AHBOA7I0xpfGRfT93bIj",
+  "_hbiYfOakbWoHkk71eBHCLKuFLhGhAmhA",
+  "3JQJYDJcVxt5MPVFDBIraasBTjh",
+];

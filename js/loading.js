@@ -8,7 +8,7 @@ const spinner = Spark.Image("./assets/icon-loading.svg", {
   },
   show: true,
 });
-const tip = Spark.Text("no data");
+const tip = Spark.Text("");
 const empty = Spark.Box({
   style: {
     margin: "100px auto",
@@ -31,8 +31,9 @@ const empty = Spark.Box({
 });
 const Loading = Spark.Box({
   child: [spinner, empty],
-  //state 0 默认,1 加载 2 完成消息
+  state: 0, //0 默认 1 加载 2 完成消息 3全部加载完
   set(state, text) {
+    this.state = state;
     if (state === 0) {
       tip.text = "";
       spinner.show = false;
@@ -42,7 +43,7 @@ const Loading = Spark.Box({
       spinner.show = true;
       empty.show = false;
     }
-    if (state === 2) {
+    if (state === 2 || state === 3) {
       tip.text = text;
       spinner.show = false;
       empty.show = true;
