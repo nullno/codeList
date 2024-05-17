@@ -31,11 +31,12 @@ export const RenderItem = (item, index) => {
   //     },
   //   },
   // });
+  const ext = getFileExtension(item.name);
   const codeHeader = Spark.Box({
     style:
       "width:100%;height: 30px;padding:0 8px; align-items:center;background-color: #343541;display: flex;flex-direction: row;flex-shrink: 0;justify-content: space-between;border-radius:6px 6px 0 0;",
     child: [
-      Spark.Text(getFileExtension(item.name), {
+      Spark.Text(ext, {
         style: "font-size: 14px;color:hsla(0, 0%, 100%, .7);padding-left:10px;",
       }),
       Spark.Box({
@@ -63,11 +64,33 @@ export const RenderItem = (item, index) => {
     },
   });
 
+  const htmlIframe =
+    ext == "html"
+      ? Spark.Box({
+          style: {
+            width: "100%",
+            height: "300px",
+            position: "absolute",
+            bottom: "30px",
+            left: "30px",
+            borderRadius: "5px",
+            background: "#fff",
+            overflow: "hidden",
+            transform: "scale(0.2)",
+            transformOrigin: "left bottom",
+            opacity: "0.9",
+          },
+          shover: { transform: "scale(0.8)", opacity: "1" },
+          created() {
+            this.$el.innerHTML = `<iframe style="width:100%;height:100%;" src="${item.path}"></iframe>`;
+          },
+        })
+      : null;
   const codeView = Spark.Box({
     style: `width:100%;height:${
       index === "noTalk" ? "480px" : "325px"
     };background-color:#12131b;border-radius:6px;`,
-    child: [codeHeader, codePre],
+    child: [codeHeader, codePre, htmlIframe],
   });
   const talkBtn = Spark.Box({
     tag: "button",
@@ -108,7 +131,6 @@ export const RenderItem = (item, index) => {
 
 const CodeList = Spark.List({
   data: [],
-
   style:
     "width:100%;max-width:1330px;margin:0 auto;overflow:hidden;padding:10px;",
   item(item, index) {

@@ -16,17 +16,17 @@ const MarkdownContent = Spark.Box({
 const BackButton = Spark.Box({
   tag: "button",
   style:
-    "width:30px;height:30px;position:absolute;top:40px;right:10px;background:url(./assets/icon-back.svg)  no-repeat 100% / cover;;border:none;cursor:pointer;",
+    "width:30px;height:30px;position:absolute;top:26px;right:15px;background:url(./assets/icon-back.svg)  no-repeat 100% / cover;;border:none;cursor:pointer;",
   on: {
     click() {
       Spark.router.back();
     },
   },
 });
-const Help = Spark.Box({
+const Readme = Spark.Box({
   style:
-    "width:100%;max-width:1000px;margin:0 auto;overflow:hidden;padding:10px;position:relative;",
+    "width:100%;min-height:100vh;max-width:1000px;margin:0 auto;overflow:hidden;padding:0 15px 50px 15px;position:relative;",
   child: [MarkdownContent, BackButton],
 });
 
-export default Help;
+export default Readme;

@@ -82,7 +82,7 @@ Share.Talk = function (codeItem) {
     repo: "codeList", // The repository of store comments,
     owner: "nullno",
     admin: ["nullno"],
-    id: codeItem.code, // Ensure uniqueness and length less than 50
+    id: codeItem.path, // Ensure uniqueness and length less than 50
     distractionFreeMode: false, // Facebook-like distraction free mode
   });
   //   Comment;

@@ -2,9 +2,10 @@ import Header from "./header.js";
 import CodeList from "./codeList.js";
 import ScrollTop from "./scrollTop.js";
 import Toast from "./toast.js";
-import readme from "./readme.js";
 import Talk from "./talk.js";
 import Copyright from "./copyright.js";
+import Readme from "./readme.js";
+import SubmitCode from "./submitCode.js";
 
 const submitBtn = Spark.Fixed({
   style: {
@@ -18,7 +19,7 @@ const submitBtn = Spark.Fixed({
   shover: { transform: "scale(1.2)" },
   on: {
     click() {
-      // Spark.router.push("/readme");
+      Spark.router.push("/submitCode");
     },
   },
 });
@@ -31,6 +32,8 @@ const PageStyle = Spark.Css({
   animation: "bgMove 300s linear infinite",
   minHeight: "100vh",
 });
+
+
 Spark.Page({
   link: { name: "home", path: "/" },
   className: PageStyle,
@@ -47,7 +50,19 @@ Spark.Page({
     recordLastPosition: false,
   },
   className: PageStyle,
-  child: [readme, Copyright, ScrollTop],
+  child: [Readme, Copyright],
+});
+Spark.Page({
+  link: {
+    name: "SubmitCode",
+    path: "/submitCode",
+    meta: {
+      title: "CodeList-submit",
+    },
+    recordLastPosition: false,
+  },
+  className: PageStyle,
+  child: [SubmitCode, Copyright],
 });
 Spark.Page({
   link: {
