@@ -1,0 +1,70 @@
+<title>下拉菜单</title>
+<style>
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .dropdown {
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown li {
+        padding: 8px;
+        position: relative;
+    }
+
+    /* 子下拉菜单 */
+    .dropdown ul {
+        width: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 0;
+        top: 100%;
+        display: none;
+        /*默认隐藏*/
+    }
+
+    /* 第二级子下拉列表 */
+    .dropdown ul ul {
+        position: absolute;
+        left: 100%;
+        top: 0;
+    }
+
+    /*鼠标滑动显示背景色*/
+    .dropdown li:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* 悬停列表项时显示直接子下拉列表 */
+    .dropdown li:hover>ul {
+        display: block;
+    }
+</style>
+
+<body>
+    <ul class="dropdown">
+        <li>首页</li>
+        <li>
+            <div>视频教程</div>
+            <ul>
+                <!-- 一级下拉菜单-->
+                <li>前端</li>
+                <li>java</li>
+                <li>
+                    <div>大数据</div>
+                    <ul>
+                        <!--二级下拉菜单 -->
+                        <li>基础</li>
+                        <li>高级</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>产品展示</li>
+        <li>关于我们</li>
+    </ul>
+</body>

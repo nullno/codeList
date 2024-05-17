@@ -1,0 +1,85 @@
+<title>文件夹目录结构</title>
+<style>
+    :root {
+        --folder-structure-item-height: 15px;
+        --folder-structure-item-margin-left: 30px;
+        --folder-structure-item-padding-top: 15px;
+    }
+
+    body,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        /*左外边距，产生不同级别水平方向间距*/
+        margin-left: var(--folder-structure-item-margin-left);
+    }
+
+    .folder-structure {
+        padding-left: 100px;
+    }
+
+    .folder-structure li {
+        /*上内边距，产生每一项上下间距*/
+        padding-top: var(--folder-structure-item-padding-top);
+        position: relative;
+    }
+
+    /*结构-竖直线*/
+    .folder-structure li::before {
+        border-left: 1px solid #333;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*向左移动 左外边距宽*/
+        transform: translate(calc(-1 * var(--folder-structure-item-margin-left)),
+                0);
+        height: 100%;
+    }
+
+    /*结构-水平横线*/
+    .folder-structure li::after {
+        border-bottom: 1px solid #333;
+        content: "";
+        left: 0;
+        position: absolute;
+        /*水平横线与li顶部的位置*/
+        top: calc(var(--folder-structure-item-padding-top) + var(--folder-structure-item-height) / 2);
+        transform: translate(-100%, 0);
+        width: var(--folder-structure-item-margin-left);
+    }
+
+    /* 移除每一级最后一项的竖直边框线 */
+    .folder-structure li:last-child::before {
+        height: calc(var(--folder-structure-item-padding-top) + var(--folder-structure-item-height) / 2);
+    }
+</style>
+
+<body>
+    <div class="folder-structure">
+        <ul>
+            <!--一级结构 -->
+            <li>
+                1...
+                <ul>
+                    <!-- 二级结构 -->
+                    <li>
+                        1.1...
+                        <ul>
+                            <!-- 三级结构 -->
+                            <li>1.1.1...</li>
+                            <li>1.1.2...</li>
+                        </ul>
+                    </li>
+                    <li>1.2...</li>
+                    <li>1.3...</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>

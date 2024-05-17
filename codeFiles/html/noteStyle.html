@@ -1,0 +1,30 @@
+<title>线条纸张布局</title>
+<style>
+    .container {
+        min-height: 100px;
+        padding: 10px 20px;
+        border: 1px solid #333;
+    }
+
+    .page {
+        /*线性渐变绘制线条*/
+        background-image: linear-gradient(#ddd 1px, #fff 0px);
+        background-size: 100% 35px;
+        /*绘制图片大小*/
+        background-position-y: 34px;
+        /*绘制线条垂直方向起始位置*/
+        line-height: 35px;
+        font-size: 14px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="page">
+            line1......<br />
+            .....line 2......<br />
+            line 3......<br />
+            ......
+        </div>
+    </div>
+</body>

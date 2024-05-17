@@ -1,0 +1,34 @@
+<title>元素水平垂直居中</title>
+<style>
+    body,
+    html {
+        height: 100%;
+    }
+
+    .container {
+        border: 1px solid #ddd;
+        height: 100%;
+        /*核心代码*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container .img {
+        width: 100px;
+        height: 100px;
+        background-color: #ddd;
+        border-radius: 100%;
+        overflow: hidden;
+        /*超出部分显示隐藏*/
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="img">...</div>
+        <div class="title">....</div>
+        <div class="info">....</div>
+    </div>
+</body>

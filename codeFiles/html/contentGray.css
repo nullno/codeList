@@ -1,0 +1,7 @@
+/*页面置灰显示*/
+
+html,
+body {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  -webkit-filter: grayscale(100%);
+}

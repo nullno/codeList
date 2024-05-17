@@ -1,0 +1,25 @@
+<div class="container">
+    <img src="path/to/image.jpg" alt="Responsive Image">
+</div>
+
+<style>
+    .container {
+        width: 300px;
+        /* 或者任何你想要的宽度 */
+        height: 200px;
+        /* 或者任何你想要的高度 */
+        overflow: hidden;
+        /* 隐藏超出容器的部分 */
+    }
+
+    .container img {
+        width: 100%;
+        /* 图片宽度为容器宽度 */
+        height: 100%;
+        /* 图片高度为容器高度 */
+        object-fit: contain;
+        /* 图片等比缩放，可能会有空白边框 */
+        /* 如果不需要空白边框，可以使用 cover，但这可能会导致图片裁剪 */
+        /* object-fit: cover; */
+    }
+</style>

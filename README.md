@@ -1,87 +1,18 @@
-# 🚀 Quickly create web pages by JavaScript
+# 📕 常用代码功能清单
 
-## 🕵️ What is Spark?
-
-<font color=red>Spark.js</font> is a lightweight JavaScript library that adopts Dart writing style. It is a three-free product: no need to package, no need to think about className, no need to write HTML, you only need to focus on writing js scripts to create pages, and built-in data binding , event monitoring, routing management, network request and other functions, more component functions will be enriched in the future;
-
-<font color=red>Spark.js</font> 是一个轻量级的 JavaScript 库，采用 dart 编写风格，它是一个三无产品：无需打包、无需思考 className、无需编写 html，你只需要专注于编写 js 脚本创建页面即可，内置数据绑定，事件监听，路由管理，网络请求等功能，未来会丰富更多组件功能；
-
-## 📕 how to use?
-
-```
-Import directly using `<script src="Spark.js"></script>`
-```
-
-## DEMO
+## 🕵️ What is CodeList?
 
 ```text
+在编程的广阔世界中，常用代码功能片段清单犹如一把开启效率之门的钥匙。这份清单精心收集了各种具有普遍实用性的代码片段，涵盖了众多关键领域。
 
-└── demo
-    ├── index.html
-    ├── js
-        └── spark.min.js
+它是程序员们的得力助手，无论是新手小白还是经验丰富的开发者，都能从中受益。通过这份清单，可以快速找到解决常见问题的代码示例，节省大量时间和精力，避免重复造轮子。它们以简洁明了的方式呈现，让你能够轻松复制运用，并且你还可以谈论它们，给出自己的建议。
+
+这份清单就像是一个代码宝库，随时为你提供灵感和解决方案，帮助你更高效地构建出优秀的程序和系统，让你的编程之旅更加顺畅和富有成效。无论是在项目开发的关键时刻，还是日常的代码编写中，它都将成为你不可或缺的伙伴。
+
+In the vast world of programming, a list of commonly used code snippets is like a key to unlocking the door to efficiency. This list is a carefully curated collection of code snippets of general utility, covering a number of key areas.
+
+It is a powerful assistant for programmers, whether they are newbies or experienced developers, everyone can benefit from it. Through this list, you can quickly find code examples that solve common problems, saving a lot of time and energy and avoiding reinventing the wheel. They're presented in a clear and concise way that you can easily copy and apply, and you can talk about them and give your own suggestions.
+
+This list is like a code treasure house, providing you with inspiration and solutions at any time to help you build excellent programs and systems more efficiently, making your programming journey smoother and more productive. Whether it is at critical moments in project development or in daily code writing, it will become your indispensable partner.
 ```
-
-_index.html_ <a href="/demo/index.html"> [DEMO]</a>
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello Spark</title>
-  </head>
-  <body>
-    <script src="./js/spark.min.js"></script>
-    <script>
-      var Hi = Spark.Text("Hello Spark", {
-        style:
-          "font-size:50px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:bolder;",
-        stopProp: true,
-        on: {
-          press() {
-            this.text = "Hello Spark";
-          },
-          up() {
-            this.text = "绽放思想的火花，去智造无限可能";
-          },
-        },
-      });
-
-      var Page = Spark.Page({
-        //定义路由信息
-        link: {
-          name: "page1",
-          path: "/",
-        },
-        style:
-          "width:100%;min-height:" +
-          Spark.screen.height() +
-          "px;background-color:#fff;color:#7566F9;",
-        child: [Hi],
-        state: 0,
-        setColor(str, styleStr) {
-          Hi.text = str;
-          this.style = styleStr;
-          this.state = !this.state;
-        },
-        on: {
-          click() {
-            if (!this.state) {
-              this.setColor(
-                "Hello Spark",
-                "background-color:#7566F9;color:#fff;"
-              );
-            } else {
-              this.setColor(
-                "Hello Spark",
-                "background-color:#fff;color:#7566F9;"
-              );
-            }
-          },
-        },
-      });
-    </script>
-  </body>
-</html>
-```
+## 📝 How to submit your own code?

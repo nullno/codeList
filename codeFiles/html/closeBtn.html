@@ -1,0 +1,41 @@
+<title>css 实现关闭按钮close</title>
+<style>
+    .close-button {
+        height: 32px;
+        width: 32px;
+        position: relative;
+        /*相对定位*/
+        border: 1px solid #ddd;
+        /*边框*/
+        cursor: pointer;
+        /*鼠标手指效果*/
+    }
+
+    .close-button::after,
+    .close-button::before {
+        content: "";
+        position: absolute;
+        /*绝对定位*/
+        height: 1px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .close-button::before {
+        left: 0px;
+        top: 50%;
+        transform: rotate(45deg);
+        /*顺时针旋转45deg*/
+    }
+
+    .close-button::after {
+        left: 0px;
+        top: 50%;
+        transform: rotate(-45deg);
+        /*逆时针旋转45deg*/
+    }
+</style>
+
+<body>
+    <div class="close-button"></div>
+</body>

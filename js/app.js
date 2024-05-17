@@ -2,11 +2,11 @@ import Header from "./header.js";
 import CodeList from "./codeList.js";
 import ScrollTop from "./scrollTop.js";
 import Toast from "./toast.js";
-import Help from "./help.js";
+import readme from "./readme.js";
 import Talk from "./talk.js";
 import Copyright from "./copyright.js";
 
-const HelpBtn = Spark.Fixed({
+const submitBtn = Spark.Fixed({
   style: {
     width: "50px",
     height: "50px",
@@ -18,7 +18,7 @@ const HelpBtn = Spark.Fixed({
   shover: { transform: "scale(1.2)" },
   on: {
     click() {
-      Spark.router.push("/help");
+      // Spark.router.push("/readme");
     },
   },
 });
@@ -34,20 +34,20 @@ const PageStyle = Spark.Css({
 Spark.Page({
   link: { name: "home", path: "/" },
   className: PageStyle,
-  child: [Header, CodeList, Talk, Copyright, Toast, HelpBtn, ScrollTop],
+  child: [Header, CodeList, Talk, Copyright, Toast, submitBtn, ScrollTop],
   created() {},
 });
 Spark.Page({
   link: {
-    name: "help",
-    path: "/help",
+    name: "readme",
+    path: "/readme",
     meta: {
-      title: "CodeList-help",
+      title: "CodeList-readme",
     },
     recordLastPosition: false,
   },
   className: PageStyle,
-  child: [Help, Copyright, ScrollTop],
+  child: [readme, Copyright, ScrollTop],
 });
 Spark.Page({
   link: {

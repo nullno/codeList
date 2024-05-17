@@ -1,0 +1,57 @@
+<title>视频背景</title>
+<style>
+    .container {
+        position: relative;
+        height: 300px;
+        background-color: red;
+    }
+
+    /*放视频容器*/
+    .container-wrapper {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /*视频大小和位置 水平垂直居中*/
+    .container-video {
+        object-fit: cover;
+        /*视频裁剪*/
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /*视频上文字容器*/
+    .container-content {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        /*从上往下排列*/
+        justify-content: center;
+        /*水平居中*/
+        color: #fff;
+        font-size: 32px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!-- 放视频的容器 -->
+        <div class="container-wrapper">
+            <video class="container-video" autoplay src="video/weibo_login.mp4"></video>
+        </div>
+        <div class="container-content">视频上可以放任何内容</div>
+    </div>
+</body>

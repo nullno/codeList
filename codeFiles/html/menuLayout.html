@@ -1,0 +1,56 @@
+<title>鼠标覆盖显示子菜单</title>
+<style>
+    .container {
+        height: 50px;
+        position: relative;
+        /*通栏导航相对定位元素*/
+        display: flex;
+        background-color: skyblue;
+    }
+
+    .container .item {
+        padding: 0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .item-content {
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-top-width: 0;
+        background: pink;
+        margin-top: -1px;
+        position: absolute;
+        /*绝对定位-相对于最外层的.container*/
+        left: 0px;
+        top: 100%;
+        box-sizing: border-box;
+        z-index: 9999;
+        display: none;
+    }
+
+    .item:hover {
+        background-color: pink;
+    }
+
+    /*鼠标滑动显示超大菜单内容*/
+    .item:hover .item-content {
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="item">菜单1
+            <div class="item-content">2 content</div>
+        </div>
+        <div class="item">菜单2</div>
+        <div class="item">
+            菜单3
+            <div class="item-content">3 content</div>
+        </div>
+        <div class="item">菜单4</div>
+    </div>
+</body>

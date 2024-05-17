@@ -1,0 +1,63 @@
+<title>在根元选择器:root 中设置自定义背景色和凹角的半径属性。我们只需要修改自定义属性的值，就可以轻松实现不同颜色大小的凹角布局效果</title>
+<style>
+    /*:root是根选择器，相当于html*/
+    :root {
+        /*--开头的是自定义属性*/
+        --concave-corners-background: pink;
+        --concave-corners-size: 20px;
+        /*定义凹角半径的大小*/
+    }
+
+    .concave-corners {
+        /*var函数通过自定义属性名，可以获取到自定义属性值*/
+        background-color: var(--concave-corners-background);
+        position: relative;
+        min-height: 100px;
+    }
+
+    .concave-corners__corner {
+        position: absolute;
+        height: var(--concave-corners-size);
+        width: var(--concave-corners-size);
+        background: #fff;
+    }
+
+    .concave-corners__corner--tl {
+        left: 0;
+        top: 0;
+        border-radius: 0 0 var(--concave-corners-size) 0;
+    }
+
+    .concave-corners__corner--tr {
+        right: 0;
+        top: 0;
+        border-radius: 0 0 0 var(--concave-corners-size);
+    }
+
+    .concave-corners__corner--bl {
+        bottom: 0;
+        left: 0;
+        border-radius: 0 var(--concave-corners-size) 0 0;
+    }
+
+    .concave-corners__corner--br {
+        bottom: 0;
+        right: 0;
+        border-radius: var(--concave-corners-size) 0 0 0;
+    }
+</style>
+
+<body>
+    <div class="concave-corners">
+        <!-- 左上角 -->
+        <div class="concave-corners__corner concave-corners__corner--tl"></div>
+        <!-- 右上角 -->
+        <div class="concave-corners__corner concave-corners__corner--tr"></div>
+        <!-- 左下角 -->
+        <div class="concave-corners__corner concave-corners__corner--bl"></div>
+        <!-- 右下角 -->
+        <div class="concave-corners__corner concave-corners__corner--br"></div>
+        <!-- 内容写往下写就好 -->
+        ...
+    </div>
+</body>

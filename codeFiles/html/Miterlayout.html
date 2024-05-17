@@ -1,0 +1,31 @@
+<title>斜切布局</title>
+<style>
+    .diagonal {
+        margin: 100px auto;
+        width: 400px;
+        min-height: 200px;
+        position: relative;
+        /*相对定位*/
+        padding: 20px;
+    }
+
+    .diagonal::before {
+        display: block;
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        /*绝对定位*/
+        left: 0px;
+        top: 0px;
+        transform: skewY(-5deg);
+        /*y轴斜切*/
+        background-color: pink;
+        z-index: -1;
+        /*控制层级-最底层*/
+    }
+</style>
+
+<body>
+    <div class="diagonal">......内容区</div>
+</body>

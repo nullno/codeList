@@ -1,0 +1,44 @@
+<title>普通列表 尾部带标签</title>
+<style>
+    .menu {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 0px 10px;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        margin: 2px 0;
+    }
+
+    .menu-hotkey {
+        margin-left: auto;
+        padding: 3px 4px;
+        border-radius: 5px;
+        background-color: pink;
+    }
+
+    .img-up {
+        margin-right: 5px;
+        width:15px;
+    }
+</style>
+
+<body>
+    <div class="menu">
+        <div class="menu-item">
+            <!-- 第一种菜单 -->
+            <div>第二种菜单</div>
+            <span class="menu-hotkey">热</span>
+        </div>
+        <div class="menu-item">
+            <!-- 第二种菜单 -->
+            <img src="../../assets/icon-submit.svg" alt="" class="img-up" />
+            <div class="title">第二种菜单</div>
+            <span class="menu-hotkey">热</span>
+        </div>
+    </div>
+</body>

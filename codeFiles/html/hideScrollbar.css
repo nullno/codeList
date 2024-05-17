@@ -1,0 +1,14 @@
+/*美化滚动条 隐藏滚动条及hover显示*/
+
+.container {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+.container::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.container:hover::-webkit-scrollbar {
+  width: 5px !important;
+}

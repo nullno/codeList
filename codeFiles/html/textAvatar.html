@@ -1,0 +1,27 @@
+<title>文字头像样式</title>
+<style>
+    .avatar {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        background-color: #333;
+        color: #fff;
+    }
+
+    /*内容水平垂直居中*/
+    .avatar-letters {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div class="avatar">
+        <div class="avatar-letters">A</div>
+    </div>
+</body>

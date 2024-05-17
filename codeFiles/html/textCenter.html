@@ -1,0 +1,58 @@
+<!-- css文本垂直居中 -->
+
+
+<div class="container1">
+    <span class="text">垂直居中</span>
+</div>
+<hr>
+<div class="container2">
+    <span class="text">垂直居中</span>
+</div>
+<hr>
+<div class="container3">
+    <span class="text">垂直居中</span>
+</div>
+<style>
+    /* 使用flexbox布局*/
+    .container1 {
+        display: flex;
+        align-items: center;
+        /* 将项目在交叉轴上居中对齐 */
+        justify-content: center;
+        /* 将项目在主轴上居中对齐（水平居中） */
+        height: 100px;
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* 使用line-height属性 */
+    .container2 {
+        height: 100px;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .container2 .text {
+        display: inline-block;
+        vertical-align: middle;
+        /* 将文本与父元素垂直居中对齐 */
+        line-height: 100px;
+        /* 与父元素高度相等 */
+    }
+
+    /*使用position属性*/
+    .container3 {
+        position: relative;
+        height: 100px;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .container3 .text {
+        position: absolute;
+        top: 50%;
+        /* 上边距为50% */
+        transform: translateY(-50%);
+        /* 使用负margin将文本向上偏移一半高度 */
+    }
+</style>

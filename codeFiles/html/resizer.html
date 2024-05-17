@@ -1,0 +1,107 @@
+<title>拖动控制布局方块</title>
+<style>
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        width: 200px;
+        height: 100px;
+        border: 1px dashed #333;
+        position: relative;
+    }
+
+    .container-resizer {
+        /*小正方形共同样式*/
+        height: 12px;
+        width: 12px;
+        position: absolute;
+        border: 1px solid #555;
+    }
+
+    .container-resizer--tl {
+        /*左上*/
+        cursor: nwse-resize;
+        left: 0px;
+        top: 0px;
+        transform: translate(-50%, -50%);
+    }
+
+    .container-resizer--tc {
+        /*上中*/
+        cursor: ns-resize;
+        left: 50%;
+        top: 0px;
+        transform: translate(-50%, -50%);
+    }
+
+    .container-resizer--tr {
+        /*上右*/
+        cursor: nesw-resize;
+        right: 0px;
+        top: 0px;
+        transform: translate(50%, -50%);
+    }
+
+    .container-resizer--rc {
+        /*右中*/
+        cursor: ew-resize;
+        right: 0px;
+        top: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .container-resizer--rb {
+        /*右底*/
+        cursor: nwse-resize;
+        bottom: 0px;
+        right: 0px;
+        transform: translate(50%, 50%);
+    }
+
+    .container-resizer--bc {
+        /*底中间*/
+        cursor: ns-resize;
+        bottom: 0px;
+        right: 50%;
+        transform: translate(50%, 50%);
+    }
+
+    .container-resizer--bl {
+        /*左底*/
+        cursor: nesw-resize;
+        bottom: 0px;
+        left: 0px;
+        transform: translate(-50%, 50%);
+    }
+
+    .container-resizer--lc {
+        /*左中*/
+        cursor: ew-resize;
+        left: 0px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!-- 左上角方块 -->
+        <div class="container-resizer container-resizer--tl"></div>
+        <!-- 顶部中间方块 -->
+        <div class="container-resizer container-resizer--tc"></div>
+        <!-- 右上角方块-->
+        <div class="container-resizer container-resizer--tr"></div>
+        <!-- 右中间方块 -->
+        <div class="container-resizer container-resizer--rc"></div>
+        <!-- 右底部方块-->
+        <div class="container-resizer container-resizer--rb"></div>
+        <!-- 底部中间方块 -->
+        <div class="container-resizer container-resizer--bc"></div>
+        <!--底部左边方块-->
+        <div class="container-resizer container-resizer--bl"></div>
+        <!-- 左边中间方块 -->
+        <div class="container-resizer container-resizer--lc"></div>
+
+    </div>
+</body>

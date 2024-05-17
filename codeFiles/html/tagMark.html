@@ -1,0 +1,49 @@
+<title>标记标签</title>
+<style>
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 9999px;
+        padding: 4px 8px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .chip-content {
+        margin-right: 5px;
+    }
+
+    .chip.current {
+        background-color: pink;
+        border: 1px solid rgb(255, 122, 144);
+        color: #fff;
+    }
+
+    .chip span {
+        display: none;
+    }
+
+    /*选中标签样式*/
+    .current span {
+        color: rgb(255, 122, 144);
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="chip">
+        <div class="chip-content">颜色</div>
+        <span>x</span>
+    </div>
+    <div class="chip current">
+        <div class="chip-content">材料</div>
+        <span>x</span>
+    </div>
+    <div class="chip">
+        <div class="chip-content">价格</div>
+        <span>x</span>
+    </div>
+</body>

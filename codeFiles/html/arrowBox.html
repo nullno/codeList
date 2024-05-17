@@ -1,0 +1,33 @@
+<title>带角对话框</title>
+<style>
+    .container {
+        width: 300px;
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid #333;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    /*三角形箭头*/
+    .container-arrow {
+        height: 16px;
+        width: 16px;
+        background-color: #fff;
+        border-left: 1px solid #333;
+        border-top: 1px solid #333;
+        position: absolute;
+        left: 32px;
+        top: -1px;
+        /*注意这里是-1不是0*/
+        transform: translate(50%, -50%) rotate(45deg);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="container-arrow"></div>
+        ......<br />
+        ........
+    </div>
+</body>

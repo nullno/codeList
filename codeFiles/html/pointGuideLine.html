@@ -1,0 +1,58 @@
+<title>点引导线</title>
+<style>
+    .container {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .item {
+        display: flex;
+        /*弹性布局*/
+        align-items: center;
+        /*垂直居中*/
+        justify-content: center;
+        /*水平居中*/
+        margin: 5px 0px;
+    }
+
+    .item-dots {
+        border-bottom: 1px dashed #ddd;
+        flex: 1;
+        /*自适应缩放-剩余空间*/
+        margin: 0px 4px;
+    }
+
+    .item-label {
+        padding: 3px 4px;
+        border-radius: 4px;
+        background-color: var(--color);
+        /*调用自定义属性的颜色值*/
+        font-size: 14px;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <!-- 左边标题 -->
+            <div class="item-title">把中国饭碗端得更牢</div>
+            <!-- 中间点引导线 -->
+            <div class="item-dots"></div>
+            <!-- 右边标签 -->
+            <div class="item-label" style="--color: pink">新</div>
+        </div>
+
+        <div class="item">
+            <div class="item-title">教育部回应教材插图事件</div>
+            <div class="item-dots"></div>
+            <div class="item-label" style="--color: skyblue">热</div>
+        </div>
+
+        <div class="item">
+            <div class="item-title">欧冠决赛</div>
+            <div class="item-dots"></div>
+            <div class="item-label" style="--color: orange">热</div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,48 @@
+<title>水印效果</title>
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .container {
+        position: relative;
+        height: 100%;
+    }
+
+    .container-wrapper {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: -1;
+        /*水印在正文内容下面*/
+    }
+
+    .container-watermark {
+        color: rgba(0, 0, 0, 0.1);
+        font-size: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transform: rotate(-45deg);
+        user-select: none;
+        /* 禁止用户选取文本*/
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!--水印容器 -->
+        <div class="container-wrapper">
+            <div class="container-watermark">水印文字</div>
+        </div>
+        <!-- 正文内容 -->
+        .............
+    </div>
+</body>

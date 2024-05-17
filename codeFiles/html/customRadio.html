@@ -1,0 +1,55 @@
+<title>自定义radio</title>
+<style>
+    label {
+        align-items: center;
+        display: inline-flex;
+        cursor: pointer;
+    }
+
+    /*隐藏真实按扭*/
+    .label-input {
+        display: none;
+    }
+
+    /*最外层圆*/
+    .label-circle {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 9999px;
+        margin-right: 8px;
+        padding: 4px;
+    }
+
+    /*单选按扭中间的圆*/
+    .label-radio {
+        height: 16px;
+        width: 16px;
+        border-radius: 9999px;
+        background-color: transparent;
+    }
+
+    /*单选按扭选中时点亮中间圆背景*/
+    .label-input:checked+.label-circle .label-radio {
+        background-color: #00449e;
+    }
+</style>
+
+<body>
+    <label class="label">
+        <!--真实的单选按扭-->
+        <input type="radio" class="label-input" name="sex" checked />
+        <!--自定义单选按扭-->
+        <div class="label-circle">
+            <div class="label-radio"></div>
+        </div>
+        男
+    </label>
+    <label class="label">
+        <!--真实的单选按扭-->
+        <input type="radio" class="label-input" name="sex" />
+        <!--自定义单选按扭-->
+        <div class="label-circle">
+            <div class="label-radio"></div>
+        </div>
+        女
+    </label>
+</body>

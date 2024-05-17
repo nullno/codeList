@@ -1,0 +1,121 @@
+<title>可折叠效果布局（手风琴）</title>
+<div class="accordion">
+    <!-- 折叠项开始  -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <!-- 可折叠小图标 -->
+            <span class="button-arrow button-arrow__right"></span>
+            <!-- 标题  -->
+            <div class="accordion-title">........</div>
+        </div>
+        <div class="accordion-content"></div>
+    </div>
+    <!-- 折叠项结束 -->
+    <!-- 折叠项开始 -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <!-- 通过js在添加和删除accordion-content__selected 样式 -->
+            <span class="button-arrow button-arrow__down"></span>
+            <div class="accordion-title">.....</div>
+        </div>
+        <div class="accordion-content accordion-content__selected">
+            ............
+        </div>
+    </div>
+    <!-- 折叠项结束 -->
+</div>
+
+<style>
+    .button-arrow {
+        padding: 10px;
+        height: 10px;
+        width: 10px;
+
+        display: inline-block;
+    }
+
+    .button-arrow__down::before,
+    .button-arrow__left::before,
+    .button-arrow__right::before,
+    .button-arrow__up::before {
+        display: block;
+        content: "";
+        width: 12px;
+        height: 12px;
+    }
+
+    .button-arrow__up::before {
+        border-left: 1px solid #666;
+        border-top: 1px solid #666;
+        transform: translateY(25%) rotate(45deg);
+    }
+
+    .button-arrow__right::before {
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        transform: translateX(-25%) rotate(45deg);
+    }
+
+    .button-arrow__down::before {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        transform: translateY(-25%) rotate(45deg);
+    }
+
+
+    .accordion {
+        border: 1px solid #ddd;
+        /*边框 1px  实线  黑色半透明*/
+        border-bottom-color: transparent;
+        /*底边框色透明，不可见*/
+        border-radius: 4px;
+        /*圆角*/
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+        display: flex;
+        /*弹性布局*/
+        align-items: center;
+        /* 垂直居中放置内容 */
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .accordion-icon {
+        margin-right: 12px;
+        /*小图标与标题右边间距*/
+        color: #ddd;
+        /*图标颜色*/
+        flex-shrink: 0;
+        /*不缩放*/
+        font-size: 20px;
+        /*控制图标大小*/
+    }
+
+    /*选中后，显示的图标*/
+    .accordion-icon__selected {
+        transform: rotate(90deg);
+    }
+
+    /*新闻标题*/
+    .accordion-title {
+        /* flex:1 相当于以下代码的简写flex-grow: 1;flex-shrink: 1;flex-basis: 0; */
+        flex: 1;
+        font-size: 16px;
+    }
+
+    .accordion-content {
+        display: none;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .accordion-content__selected {
+        /* 选中后，显示内容 */
+        display: block;
+    }
+</style>

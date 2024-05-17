@@ -1,0 +1,36 @@
+<title>尾部文字衰减半透明</title>
+<style>
+    .container {
+        position: relative;
+        /*相对定位*/
+        width: 100px;
+        border: 1px solid #ddd;
+    }
+
+    .container-content {
+        height: 200px;
+        overflow-y: scroll;
+        /*垂直方向超出内容显示滚动条*/
+    }
+
+    .container-fading {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+        width: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.01),
+                #fff);
+        /*线性渐变，从黑色透明0.01到白色*/
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="container-content">
+            ........尾部文字衰减效果尾部文字衰减效果尾部文字衰减效果
+            尾部文字衰减效果尾部文字衰减效果尾部文字衰减效果
+        </div>
+        <div class="container-fading"></div>
+    </div>
+</body>

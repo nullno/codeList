@@ -1,0 +1,39 @@
+<title>当颜色的开关数量很多时，我们可以通过自定义属性来定义颜色值，然后通过 var 函数来获取自定义属性的颜色</title>
+<style>
+    .color-swatch {
+        width: 200px;
+        display: flex;
+        /*弹性布局*/
+        flex-wrap: wrap;
+        /*放不下时换行*/
+    }
+
+    .color-swatch-item {
+        border-radius: 100%;
+        /*圆角*/
+        height: 25px;
+        width: 25px;
+        margin: 3px;
+        /*--color为自定属性  var函数可以获取自定义属性的值*/
+        background-color: var(--color);
+    }
+</style>
+
+<body>
+    <div class="color-swatch">
+        <div class="color-swatch-item" style="--color: red"></div>
+        <div class="color-swatch-item" style="--color: khaki"></div>
+        <div class="color-swatch-item" style="--color: blue"></div>
+        <div class="color-swatch-item" style="--color: green"></div>
+        <div class="color-swatch-item" style="--color: pink"></div>
+        <div class="color-swatch-item" style="--color: orange"></div>
+        <div class="color-swatch-item" style="--color: tomato"></div>
+        <div class="color-swatch-item" style="--color: skyblue"></div>
+        <div class="color-swatch-item" style="--color: tomato"></div>
+        <div class="color-swatch-item" style="--color: aqua"></div>
+        <div class="color-swatch-item" style="--color: blueviolet"></div>
+        <div class="color-swatch-item" style="--color: springgreen"></div>
+        <div class="color-swatch-item" style="--color: teal"></div>
+        ......
+    </div>
+</body>

@@ -1,0 +1,53 @@
+<!-- 向上箭头 -->
+<div class="button-arrow button-arrow__up"></div>
+<!-- 向右箭头 -->
+<div class="button-arrow button-arrow__right"></div>
+<!-- 向下箭头 -->
+<div class="button-arrow button-arrow__down"></div>
+<!-- 向左箭头 -->
+<div class="button-arrow button-arrow__left"></div>
+
+<style>
+    /* 利用border边框属性和rotate旋转来制作不同方向箭头 */
+    .button-arrow {
+        padding: 10px;
+        height: 12px;
+        width: 12px;
+        border: 1px solid #ddd;
+        display: inline-block;
+    }
+
+    .button-arrow__down::before,
+    .button-arrow__left::before,
+    .button-arrow__right::before,
+    .button-arrow__up::before {
+        display: block;
+        content: "";
+        width: 12px;
+        height: 12px;
+    }
+
+    .button-arrow__up::before {
+        border-left: 1px solid #666;
+        border-top: 1px solid #666;
+        transform: translateY(25%) rotate(45deg);
+    }
+
+    .button-arrow__right::before {
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        transform: translateX(-25%) rotate(45deg);
+    }
+
+    .button-arrow__down::before {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        transform: translateY(-25%) rotate(45deg);
+    }
+
+    .button-arrow__left::before {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        border-left: 1px solid rgba(0, 0, 0, 0.3);
+        transform: translateX(25%) rotate(45deg);
+    }
+</style>

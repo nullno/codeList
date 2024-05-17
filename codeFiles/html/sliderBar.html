@@ -1,0 +1,42 @@
+<title>滑动、进度布局、数量控制器</title>
+<style>
+    .slider {
+        height: 32px;
+        display: flex;
+        /*弹性布局，默认水平排列*/
+        align-items: center;
+        /*垂直居中*/
+    }
+
+    /*滑动条左侧线条*/
+    .slider-left {
+        height: 2px;
+        background-color: pink;
+    }
+
+    /*滑动条中间圆手柄*/
+    .slider-circle {
+        height: 32px;
+        width: 32px;
+        border-radius: 9999px;
+        background-color: pink;
+    }
+
+    /*滑动条右侧线条*/
+    .slider-right {
+        flex: 1;
+        height: 2px;
+        background-color: #ddd;
+    }
+</style>
+
+<body>
+    <div class="slider">
+        <!--左边线条 当前进度值来决定宽度 -->
+        <div class="slider-left" style="width: 40%"></div>
+        <!-- 圆点 -->
+        <div class="slider-circle"></div>
+        <!-- 右边线条 -->
+        <div class="slider-right"></div>
+    </div>
+</body>

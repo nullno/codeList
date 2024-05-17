@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 实现平均分布，自适应换行，不限数量</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    .container {
+        height: 100%;
+        width: 100%;
+        background: rgb(176, 227, 247);
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    ul {
+        display: grid;
+        grid-gap: 50px;
+        /* 每个网格之间的间距 */
+        justify-content: space-evenly;
+        /* 均匀平铺 */
+        grid-template-columns: repeat(auto-fill, 400px);
+        /* 自适应数量 个 宽度为400的列  */
+    }
+
+    ul li {
+        height: 300px;
+        background: rgb(252, 250, 251);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>

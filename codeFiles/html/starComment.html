@@ -1,0 +1,40 @@
+<title>星级评估</title>
+<style>
+    .rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        /*从右往左排列，关键性代码*/
+    }
+
+    .rating-star {
+        position: relative;
+        margin: 0 2px;
+        font-size: 42px;
+        color: #ddd;
+    }
+
+    .rating-star::before {
+        content: "\2605";
+        /*实心星*/
+        left: 0;
+        position: absolute;
+    }
+
+    /*鼠标滑动到星上时，星后面对应的星都变红*/
+    .rating-star:hover:before,
+    .rating-star:hover~.rating-star:before {
+        color: red;
+    }
+</style>
+
+<body>
+    <div class="rating">
+        <span class="rating-star">☆</span>
+        <span class="rating-star">☆</span>
+        <span class="rating-star">☆</span>
+        <span class="rating-star">☆</span>
+        <span class="rating-star">☆</span>
+    </div>
+</body>

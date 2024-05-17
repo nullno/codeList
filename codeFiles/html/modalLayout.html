@@ -1,0 +1,92 @@
+<title>常见弹窗布局</title>
+<style>
+    .modal {
+        width: 500px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        /*两端对齐*/
+        align-items: center;
+        /*垂直居中对齐*/
+        border-bottom: 1px solid #333;
+    }
+
+    .modal-header span {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    /*关闭按扭*/
+    .modal-header span::after,
+    .modal-header span::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background-color: #333;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+
+    .modal-header span::after {
+        transform: rotate(45deg);
+        /*顺序针旋转45deg*/
+    }
+
+    .modal-header span::before {
+        transform: rotate(-45deg);
+        /*逆时针旋转45deg*/
+    }
+
+    .modal-content {
+        min-height: 100px;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        /*右端对齐*/
+    }
+
+    /*按扭共同样式*/
+    .modal-footer button {
+        margin-right: 10px;
+        width: 100px;
+        height: 35px;
+        background-color: tomato;
+        color: #fff;
+        border: none;
+    }
+
+    /*取消按扭样式*/
+    .modal-footer button.cancel {
+        background-color: #ddd;
+        color: #333;
+    }
+</style>
+
+<body>
+    <div class="modal">
+        <!-- 弹窗标题与关闭按扭 -->
+        <div class="modal-header">
+            <h3>登录</h3>
+            <span class="close-button"></span>
+        </div>
+        <!-- 弹窗内容 -->
+        <div class="modal-content">..........</div>
+        <!-- 底部按扭 -->
+        <div class="modal-footer">
+            <button>确定</button>
+            <button class="cancel">取消</button>
+        </div>
+    </div>
+</body>

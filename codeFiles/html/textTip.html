@@ -1,0 +1,57 @@
+<title>鼠标覆盖title提示框</title>
+<style>
+    .tip {
+        position: relative;
+        width: 200px;
+        min-height: 60px;
+        margin: 0 auto;
+        margin-top: 200px;
+        background-color: #ddd;
+
+    }
+
+    .tip-content {
+        opacity: 0;
+        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        min-width: 100px;
+        border-radius: 2px;
+        padding: 10px;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, -8px);
+        z-index: 10;
+    }
+
+    .tip-content::after {
+        display: block;
+        content: "";
+        /*绘制三角形*/
+        height: 0;
+        width: 0;
+        border: 8px solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+        /*三角形位置*/
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        z-index: 10;
+    }
+
+    /*显示箭头和内容并还原指针事件*/
+    .tip:hover .tip-content {
+        opacity: 1;
+        pointer-events: initial;
+    }
+</style>
+
+<body>
+    <div class="tip">
+        <div class="tip-content">.........</div>
+        ...
+    </div>
+</body>

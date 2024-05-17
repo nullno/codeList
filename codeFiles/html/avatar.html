@@ -1,0 +1,23 @@
+<title>头像布局</title>
+<div class="user-avatar">
+    <img class="avatar-image"
+        src="https://source.unsplash.com/random/100x100" />
+</div>
+
+<style>
+    .user-avatar {
+        border-radius: 50%;
+        height: 64px;
+        width: 64px;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    .avatar-image {
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        /*按图片原有尺寸比例来裁剪*/
+    }
+</style>

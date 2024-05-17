@@ -1,0 +1,33 @@
+/*文本一行显示 */
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /*强制不换行*/
+}
+
+/*文本多行显示 文本溢出省略号*/
+.content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /*显示文字的行数*/
+  -webkit-box-orient: vertical;
+}
+
+/*最后一行显示半行*/
+.content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  position: relative;
+}
+.content:after {
+  content: "...";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 352px;
+  padding-left: 4px;
+  background: linear-gradient(to right, transparent, #fff 0%);
+}

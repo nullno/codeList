@@ -13,6 +13,11 @@ const logo = Spark.Box({
       style: "position:relative;z-index:1;",
     }),
   ],
+  on: {
+    click() {
+      Spark.router.push("/readme");
+    },
+  },
 });
 
 const searchButton = Spark.Text("🔍", {

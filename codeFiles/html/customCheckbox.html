@@ -1,0 +1,53 @@
+<title>自定义复选框</title>
+<style>
+    .label {
+        display: inline-flex;
+        align-items: center;
+        /*垂直居中显示*/
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    /*隐藏真实的复选框*/
+    .label-input {
+        display: none;
+    }
+
+    .label-square {
+        /*复选框外轮廓样式*/
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        margin-right: 8px;
+        padding: 4px;
+    }
+
+    /*中间选中区样式*/
+    .label-checkbox {
+        border-radius: 4px;
+        height: 14px;
+        width: 14px;
+    }
+
+    /*复选框被选中时点亮背景色*/
+    input:checked+.label-square .label-checkbox {
+        background-color: #00449e;
+    }
+</style>
+
+<body>
+    <label class="label">
+        <input type="checkbox" class="label-input" />
+        <div class="label-square">
+            <div class="label-checkbox"></div>
+        </div>
+        华为
+    </label>
+    <label class="label">
+        <input type="checkbox" class="label-input" />
+        <div class="label-square">
+            <div class="label-checkbox"></div>
+        </div>
+        小米
+    </label>
+    <!--重复以上代码-->
+</body>

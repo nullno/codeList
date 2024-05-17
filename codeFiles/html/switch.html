@@ -1,0 +1,62 @@
+<title>自定义开关</title>
+<style>
+    .switch {
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        position: relative;
+    }
+
+    /*隐藏真实复选框*/
+    .switch input {
+        display: none;
+    }
+
+    /*开关样式*/
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: 0.4s;
+        border-radius: 20px;
+    }
+
+    .slider:before {
+        /*开关按扭*/
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        border-radius: 999px;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+
+    /*被选中时按扭的背景色*/
+    input:checked+.slider {
+        background-color: #2196f3;
+    }
+
+    /*被选中时按扭位置*/
+    input:checked+.slider::before {
+        transform: translateX(26px);
+    }
+</style>
+
+<body>
+    <label class="switch">
+        <input type="checkbox" />
+        <div class="slider"></div>
+    </label>
+    <label class="switch">
+        <input type="checkbox" checked />
+        <div class="slider"></div>
+    </label>
+</body>

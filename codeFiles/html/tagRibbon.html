@@ -1,0 +1,36 @@
+<title>
+    拐角丝带 角标
+</title>
+<style>
+    .container {
+        position: relative;
+        /*相对定位*/
+        border: 1px solid #ddd;
+        min-height: 200px;
+        overflow: hidden;
+        /*超出部分隐藏*/
+    }
+
+    .container-ribbon {
+        height: 24px;
+        width: 206px;
+        position: absolute;
+        /*绝对定位*/
+        top: 32px;
+        left: -64px;
+        transform: rotate(-45deg);
+        /*逆时针旋转45deg*/
+        background-color: red;
+        text-align: center;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!--丝带-->
+        <div class="container-ribbon">hot</div>
+        <!--内容区-->
+        <div class="container-content">....</div>
+    </div>
+</body>

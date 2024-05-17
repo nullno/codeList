@@ -1,0 +1,42 @@
+<title>气泡框</title>
+<style>
+    /*:root是根选择器，相当于html*/
+    :root {
+        --inverted-corners-background: pink;
+        /*自定义属性   会话框背景色*/
+        --inverted-corners-size: 20px;
+        /*自定义属性  转角大小*/
+    }
+
+    .inverted-corners {
+        position: relative;
+        /*相对定位*/
+        background-color: var(--inverted-corners-background);
+        /*var函数 获取自定义属性*/
+        padding: 20px;
+        min-height: 100px;
+        border-radius: 20px 20px 20px 0px;
+        /*圆角*/
+        color: #fff;
+    }
+
+    .inverted-corners::before {
+        content: "";
+        /*控制转角位置*/
+        position: absolute;
+        bottom: calc(-2 * var(--inverted-corners-size));
+        /*与高度值一样*/
+        left: 0;
+        /*绘制转角*/
+        height: calc(2 * var(--inverted-corners-size));
+        width: var(--inverted-corners-size);
+        background-color: transparent;
+        border-top-left-radius: var(--inverted-corners-size);
+        box-shadow: 0px calc(-1 * var(--inverted-corners-size)) var(--inverted-corners-background);
+        /*阴影*/
+    }
+</style>
+
+<body>
+    <div class="inverted-corners">..........</div>
+</body>

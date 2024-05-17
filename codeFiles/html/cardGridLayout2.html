@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex 弹性盒子布局多行最后一行左对齐的解决办法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .content_items {
+            margin: 40px auto;
+            width: 1058px;
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-gap: 40px 30px;
+        }
+
+        .content_items li {
+            width: 240px;
+            height: 220px;
+            background-color: #ccc;
+            cursor: pointer;
+            color: #fff;
+            text-align: center;
+            line-height: 220px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="content_items">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+
+    </ul>
+</body>
+
+</html>

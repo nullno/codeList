@@ -1,0 +1,31 @@
+<h3>grid + template</h3>
+
+<div class="box">
+    <div class="content">
+        grid + template 多行文本垂直居中
+        <a>grid + template 多行文本垂直居中</a>
+        grid + template 多行文本垂直居中
+    </div>
+</div>
+
+<style>
+    .box {
+        width: 500px;
+        height: 200px;
+        border: 1px #000 solid;
+        display: grid;
+        grid-template-rows: 1fr auto 1fr;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-areas:
+            '. . .'
+            '. amos .'
+            '. . .';
+
+    }
+
+    .content {
+        width: 400px;
+        background: #ccc;
+        grid-area: amos;
+    }
+</style>
