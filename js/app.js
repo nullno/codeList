@@ -33,7 +33,6 @@ const PageStyle = Spark.Css({
   minHeight: "100vh",
 });
 
-
 Spark.Page({
   link: { name: "home", path: "/" },
   className: PageStyle,
@@ -62,7 +61,7 @@ Spark.Page({
     recordLastPosition: false,
   },
   className: PageStyle,
-  child: [SubmitCode, Copyright],
+  child: [SubmitCode, Toast, Copyright],
 });
 Spark.Page({
   link: {
