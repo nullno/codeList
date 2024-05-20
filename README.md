@@ -17,3 +17,7 @@ This list is like a code treasure house, providing you with inspiration and solu
 ```
 
 ## 📝 How to submit your own code?
+
+1.You can fork the [repository](https://github.com/nullno/codeList) and we will merge them.
+
+2.Go to [edit page](#/submitCode)->paste the code->submit it.

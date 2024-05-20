@@ -1,5 +1,5 @@
 import Share from "./share.js";
-import { Types, gtoken } from "./type.js";
+import { Types, gtoken } from "./config.js";
 import Loading from "./loading.js";
 
 async function copyTextToClipboard(file) {
@@ -190,15 +190,16 @@ const CodeListMain = Spark.Box({
       // this.Loading
       isFlush && CodeList.clear();
       Loading.set(1);
-      const lan = localStorage.language
-        ? Types[localStorage.language].skey
+      const path = localStorage.language
+        ? Types[localStorage.language].path
         : "";
 
       const query = encodeURIComponent(
-        `${this.search.keyword} path:codeFiles/${lan} ${
-          lan & (lan != "normal") ? "language:" + lan : ""
-        } repo:nullno/codeList`
+        `${this.search.keyword} path:codeFiles/${path} repo:nullno/codeList`
       );
+      // ${
+      //   lan & (lan != "normal") ? "language:" + lan : ""
+      // }
       const Authorization = {
         headers: {
           Authorization: "token " + gtoken.join(""),

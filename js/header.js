@@ -1,5 +1,5 @@
 import Share from "./share.js";
-import { Types, TypesList } from "./type.js";
+import { Types, TypesList } from "./config.js";
 
 const logo = Spark.Box({
   style:

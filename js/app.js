@@ -60,6 +60,7 @@ Spark.Page({
     },
     recordLastPosition: false,
   },
+  keepalive: false,
   className: PageStyle,
   child: [SubmitCode, Toast, Copyright],
 });

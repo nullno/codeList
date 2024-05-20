@@ -1,4 +1,4 @@
-import { Types, TypesList, gtoken } from "./type.js";
+import { Types, TypesList, gtoken } from "./config.js";
 import Share from "./share.js";
 import { Base64 } from "https://cdn.jsdelivr.net/npm/js-base64@3.7.7/base64.mjs";
 
@@ -18,9 +18,55 @@ const BackButton = Spark.Box({
 });
 
 const tagStyle = Spark.Css("width:100%;padding:5px 20px;display:inline-block;");
+const fileInput = Spark.Input({
+  style:
+    "display:inline-block;max-width:200px;min-height:25px;height:25px;line-height:25px;color:#fff;font-size:12px;",
+  onStyle: "color:#fff;",
+  placeholder: "input filename : demo.xx",
+});
+const selectPanel = Spark.List({
+  data: TypesList,
+  style:
+    "position:absolute;top:35px;color:#fff;background:#343541;border-radius:3px;z-index:3;overflow:hidden;",
+  show: false,
+  init() {
+    const index = TypesList.findIndex((e) => e == localStorage.language);
+    this.selected(index == -1 ? 1 : index);
+    document.body.addEventListener("click", () => {
+      this.show = false;
+    });
+  },
+  selected(activeIndex) {
+    const useLanagaue = typeSelect.getChild(0);
+    useLanagaue.text = typeSelect.curLanguage =
+      Types[TypesList[activeIndex]].path;
+    TypesList.forEach((e, index) => {
+      const curItem = this.getChild(index);
+      curItem.style = `background:transparent;`;
+      if (activeIndex === index) {
+        curItem.style = `background:#2590F1;`;
+      }
+    });
+  },
 
+  item(item, index) {
+    const _scope = this;
+    return Spark.Box({
+      tag: "li",
+      className: tagStyle,
+      shover: "background:#2590F1;",
+      child: [Spark.Text(item)],
+      on: {
+        click() {
+          _scope.selected(index);
+          _scope.show = false;
+        },
+      },
+    });
+  },
+});
 const typeSelect = Spark.Box({
-  style: "position:relative;",
+  style: "position:relative; display:flex;align-items:center;",
   curLanguage: "js",
   child: [
     Spark.Text("js", {
@@ -28,57 +74,18 @@ const typeSelect = Spark.Box({
         "font-size: 14px;color:hsla(0, 0%, 100%, .7);padding-left:10px;user-select:none;",
       on: {
         click() {
-          const List = typeSelect.getChild(1);
-          List.show = !List.show;
+          selectPanel.show = !selectPanel.show;
         },
       },
     }),
-    Spark.List({
-      data: TypesList,
-      style:
-        "position:absolute;top:30px;color:#fff;background:#343541;border-radius:3px;z-index:3;overflow:hidden;",
-      show: false,
-      init() {
-        this.selected(1);
-        document.body.addEventListener("click", () => {
-          this.show = false;
-        });
-      },
-      selected(activeIndex) {
-        TypesList.forEach((e, index) => {
-          const curItem = this.getChild(index);
-          curItem.style = `background:transparent;`;
-          if (activeIndex === index) {
-            curItem.style = `background:#2590F1;`;
-          }
-        });
-      },
-
-      item(item, index) {
-        const _scope = this;
-        return Spark.Box({
-          tag: "li",
-          className: tagStyle,
-          shover: "background:#2590F1;",
-          child: [Spark.Text(item)],
-
-          on: {
-            click() {
-              const useLanagaue = typeSelect.getChild(0);
-              useLanagaue.text = typeSelect.curLanguage = Types[item].skey;
-              _scope.selected(index);
-              _scope.show = false;
-            },
-          },
-        });
-      },
-    }),
+    fileInput,
+    selectPanel,
   ],
 });
 const submitBtn = Spark.Text("submit", {
   tag: "button",
   style:
-    "font-size:14px;background:#2590F1; color:#fff;padding:3px 12px;border:none;cursor:pointer;border-radius:4px;",
+    "font-size:14px;background:#2590F1; color:#fff;padding:2px 12px;border:none;cursor:pointer;border-radius:4px;",
   on: {
     click() {
       codeEdit.submitContent();
@@ -144,6 +151,7 @@ const codeEdit = Spark.Box({
     codePre.$el.innerHTML = ">> Please paste the code.";
     this.submitting = false;
     submitBtn.text = "submit";
+    fileInput.value = "";
   },
   submitting: false,
   async submitContent() {
@@ -151,13 +159,23 @@ const codeEdit = Spark.Box({
       if (this.submitting) return;
       const content = codeTextarea.$el.value;
       const language = typeSelect.curLanguage;
-      if (content.length < 100) {
-        Share.Toast("It may not be useful content!");
+      if (content.length < 50) {
+        Share.Toast("Useless content!");
         return;
       }
+      let fileName = fileInput.value.replace(/^\s*|\s*$/g, "");
+      if (
+        new RegExp('[\\\\/:*?"<>|]').test(fileName) ||
+        fileName == "" ||
+        !fileName.includes(".")
+      ) {
+        Share.Toast("Filename error!");
+        return;
+      }
+
       this.submitting = true;
       submitBtn.text = "submitting";
-      const fileName = `u_${Date.now()}.${language}`;
+
       const Base64Data = Base64.encode(content);
       const Res = await Spark.axios.put(
         `https://api.github.com/repos/nullno/codeList/contents/codeFiles/${language}/${fileName}`,
@@ -171,12 +189,13 @@ const codeEdit = Spark.Box({
           },
         }
       );
-      console.log(Res);
+      // console.log(Res);
       if (!Res.data.content) throw "failed";
       Share.Toast("submit success!");
       this.clear();
     } catch (err) {
-      Share.Toast("submit rejected!");
+      console.log(err);
+      Share.Toast("submit rejected,Try change filename or Retry!");
       this.clear();
     }
   },
