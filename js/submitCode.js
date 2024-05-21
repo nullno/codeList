@@ -22,7 +22,7 @@ const fileInput = Spark.Input({
   style:
     "display:inline-block;max-width:200px;min-height:25px;height:25px;line-height:25px;color:#fff;font-size:12px;",
   onStyle: "color:#fff;",
-  placeholder: "input filename : demo.xx",
+  placeholder: "输入文件名:demo.txt",
 });
 const selectPanel = Spark.List({
   data: TypesList,
@@ -82,7 +82,7 @@ const typeSelect = Spark.Box({
     selectPanel,
   ],
 });
-const submitBtn = Spark.Text("submit", {
+const submitBtn = Spark.Text("提交", {
   tag: "button",
   style:
     "font-size:14px;background:#2590F1; color:#fff;padding:2px 12px;border:none;cursor:pointer;border-radius:4px;",
@@ -150,7 +150,7 @@ const codeEdit = Spark.Box({
     codeTextarea.$el.value = "";
     codePre.$el.innerHTML = ">> Please paste the code.";
     this.submitting = false;
-    submitBtn.text = "submit";
+    submitBtn.text = "提交";
     fileInput.value = "";
   },
   submitting: false,
@@ -174,7 +174,7 @@ const codeEdit = Spark.Box({
       }
 
       this.submitting = true;
-      submitBtn.text = "submitting";
+      submitBtn.text = "🚥";
 
       const Base64Data = Base64.encode(content);
       const Res = await Spark.axios.put(
@@ -191,11 +191,11 @@ const codeEdit = Spark.Box({
       );
       // console.log(Res);
       if (!Res.data.content) throw "failed";
-      Share.Toast("submit success!");
+      Share.Toast("提交成功!");
       this.clear();
     } catch (err) {
       console.log(err);
-      Share.Toast("submit rejected,Try change filename or Retry!");
+      Share.Toast("提交失败,请更改文件名或稍后重试!");
       this.clear();
     }
   },

@@ -9,10 +9,6 @@
 
 这份清单就像是一个代码宝库，随时为你提供灵感和解决方案，帮助你更高效地构建出优秀的程序和系统，让你的编程之旅更加顺畅和富有成效。无论是在项目开发的关键时刻，还是日常的代码编写中，它都将成为你不可或缺的伙伴。
 
-In the vast world of programming, a list of commonly used code snippets is like a key to unlocking the door to efficiency. This list is a carefully curated collection of code snippets of general utility, covering a number of key areas.
-
-It is a powerful assistant for programmers, whether they are newbies or experienced developers, everyone can benefit from it. Through this list, you can quickly find code examples that solve common problems, saving a lot of time and energy and avoiding reinventing the wheel. They're presented in a clear and concise way that you can easily copy and apply, and you can talk about them and give your own suggestions.
-
 This list is like a code treasure house, providing you with inspiration and solutions at any time to help you build excellent programs and systems more efficiently, making your programming journey smoother and more productive. Whether it is at critical moments in project development or in daily code writing, it will become your indispensable partner.
 ```
 

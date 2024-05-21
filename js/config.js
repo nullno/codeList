@@ -15,9 +15,7 @@ export const Types = {
   Dart: { color: "#00b4ab", icon: "⚡️", path: "dart" },
   Ruby: { color: "#701516", icon: "🌙", path: "ruby" },
   R: { color: "#198ce7", icon: "🎃", path: "r" },
-  Markdown: { color: "#5F74CB", icon: "🎃", path: "markdown" },
-  Database: { color: "#4b2e83", icon: "📖", path: "database" },
-  Server: { color: "#28a745", icon: "🚧", path: "server" },
+  FISH: { color: "#4b2e83", icon: "🌊", path: "fish" }
 };
 export const TypesList = Object.keys(Types);
 
