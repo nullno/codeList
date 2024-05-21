@@ -2,6 +2,12 @@ import Share from "./share.js";
 import { Types, gtoken } from "./config.js";
 import Loading from "./loading.js";
 
+const MD = window.markdownit({
+  html: true,
+  linkify: true,
+  typographer: true,
+});
+
 async function copyTextToClipboard(file) {
   try {
     const content = await Spark.axios.get(file);
@@ -58,8 +64,15 @@ export const RenderItem = (item, index) => {
   const codePre = Spark.Box({
     style:
       "width:100%;height:calc(100% - 30px);color:#fff;overflow:hidden;border-radius:0 0 6px 6px;padding:2px;",
-    created() {
-      this.$el.innerHTML = `<pre data-src="${item.path}"></pre>`;
+    async created() {
+      if (ext == "md") {
+        const Res = await Spark.axios.get(item.path);
+        this.$el.innerHTML = `<div class="markdown-content markdown-container">
+        ${MD.render(Res.data)}</div>`;
+      } else {
+        this.$el.innerHTML = `<pre data-src="${item.path}"></pre>`;
+      }
+
       Prism.highlightAll();
     },
   });

@@ -7,14 +7,16 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  */
 
 pre[class*="language-"]::-webkit-scrollbar,
-#code-edit::-webkit-scrollbar {
+#code-edit::-webkit-scrollbar,
+.markdown-container::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   position: fixed;
   background: #12131b;
 }
 pre[class*="language-"]::-webkit-scrollbar-track,
-#code-edit::-webkit-scrollbar-track {
+#code-edit::-webkit-scrollbar-track,
+.markdown-container::-webkit-scrollbar-track {
   width: 5px;
   background: #12131b;
   -webkit-border-radius: 2em;
@@ -22,7 +24,8 @@ pre[class*="language-"]::-webkit-scrollbar-track,
   border-radius: 2em;
 }
 pre[class*="language-"]::-webkit-scrollbar-thumb,
-#code-edit::-webkit-scrollbar-thumb {
+#code-edit::-webkit-scrollbar-thumb,
+.markdown-container::-webkit-scrollbar-thumb {
   background-color: #666;
   background-clip: padding-box;
   min-height: 20px;
@@ -31,11 +34,13 @@ pre[class*="language-"]::-webkit-scrollbar-thumb,
   border-radius: 2em;
 }
 pre[class*="language-"]::-webkit-scrollbar-thumb:hover,
-#code-edit::-webkit-scrollbar-thumb:hover {
+#code-edit::-webkit-scrollbar-thumb:hover,
+.markdown-container::-webkit-scrollbar-thumb:hover {
   background-color: #ccc;
 }
 pre[class*="language-"]::-webkit-scrollbar-corner,
-#code-edit::-webkit-scrollbar-corner {
+#code-edit::-webkit-scrollbar-corner,
+.markdown-container::-webkit-scrollbar-corner {
   background: #12131b;
 }
 
@@ -160,6 +165,15 @@ pre[class*="language-"] {
   margin: revert;
   padding: revert;
   list-style: revert;
+}
+.markdown-container {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  padding: 0 5px;
+}
+.markdown-content h1{
+  line-height:40px;
 }
 .markdown-content pre {
   display: block;
