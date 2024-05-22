@@ -172,8 +172,8 @@ pre[class*="language-"] {
   width: 100%;
   padding: 0 5px;
 }
-.markdown-content h1{
-  line-height:40px;
+.markdown-content h1 {
+  line-height: 40px;
 }
 .markdown-content pre {
   display: block;
@@ -221,20 +221,24 @@ pre[class*="language-"] {
   color: #428bca;
   text-decoration: none;
 }
+.markdown-content table {
+  color: #666;
+  border: 1px solid #666;
+}
 .markdown-content table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  padding: 6px;
+
+  border: 1px solid #666;
 }
 .markdown-content table > tbody > tr > td {
-  padding: 8px;
-  line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
+  padding: 6px;
+
+  border: 1px solid #666;
 }
-.markdown-content table > tbody > tr:nth-child(odd) > td,
+/* .markdown-content table > tbody > tr:nth-child(odd) > td,
 .markdown-content table > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
-}
+} */
 
 .gt-container .gt-meta {
   margin: unset;
