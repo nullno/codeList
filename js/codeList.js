@@ -179,7 +179,7 @@ const CodeListMain = Spark.Box({
     this.getCodeFile();
     document.addEventListener("scroll", () => {
       if (
-        Spark.Util.screen.scrollTop() + Spark.Util.screen.height() ==
+        Math.ceil(Spark.Util.screen.scrollTop() + Spark.Util.screen.height()) >=
         Spark.Util.screen.scrollHeight()
       ) {
         if (Loading.state == 1 || Loading.state == 3) return;
@@ -210,9 +210,6 @@ const CodeListMain = Spark.Box({
       const query = encodeURIComponent(
         `${this.search.keyword} path:codeFiles/${path} repo:nullno/codeList`
       );
-      // ${
-      //   lan & (lan != "normal") ? "language:" + lan : ""
-      // }
       const Authorization = {
         headers: {
           Authorization: "token " + gtoken.join(""),
