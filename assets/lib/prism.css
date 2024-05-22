@@ -208,7 +208,9 @@ pre[class*="language-"] {
   background-color: #f9f2f4;
   border-radius: 4px;
 }
-
+.markdown-content pre[class*="language-"]{
+  height: unset;
+}
 .markdown-content pre code {
   padding: 0;
   font-size: inherit;
