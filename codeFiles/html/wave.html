@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>css声音波纹</title>
+    <style>
+        body {
+            padding: 120px;
+        }
+
+        .wave-ani {
+            width: 175px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .wave-ani span {
+            width: 6px;
+            border-radius: 18px;
+            margin-right: 6px;
+        }
+
+        .wave-ani span:nth-child(1) {
+            animation: voiceWave 1s infinite;
+        }
+
+        .wave-ani span:nth-child(2) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.1s;
+        }
+
+        .wave-ani span:nth-child(3) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.2s;
+        }
+
+        .wave-ani span:nth-child(4) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.3s;
+        }
+
+        .wave-ani span:nth-child(5) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.4s;
+        }
+
+        .wave-ani span:nth-child(6) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .wave-ani span:nth-child(7) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.6s;
+        }
+
+        .wave-ani span:nth-child(8) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.7s;
+        }
+
+        .wave-ani span:nth-child(9) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.8s;
+        }
+
+        .wave-ani span:nth-child(10) {
+            animation: voiceWave 1s infinite;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes voiceWave {
+            0% {
+                height: 60px;
+                background-color: #98FB98;
+            }
+
+            50% {
+                height: 80px;
+                background-color: #00FF00;
+            }
+
+            100% {
+                height: 60px;
+                background-color: #98FB98;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wave-ani">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
