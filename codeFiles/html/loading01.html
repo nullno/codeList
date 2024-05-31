@@ -1,0 +1,77 @@
+<!-- 加载动画 -->
+<div class="enter-loading">
+    <div class="spin-wrap">
+        <i class="spin-dot"></i>
+        <i class="spin-dot"></i>
+        <i class="spin-dot"></i>
+        <i class="spin-dot"></i>
+    </div>
+    <span>loading...</span>
+</div>
+
+<style>
+    .enter-loading {
+        box-sizing: border-box;
+        width: 65px;
+        height: 65px;
+        background-size: 100% 100%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -32.5px;
+        margin-left: -32.5px;
+        z-index: 999;
+    }
+
+    .spin-wrap {
+        box-sizing: border-box;
+        width: 38px;
+        height: 38px;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -19px;
+        margin-top: -19px;
+        animation: spinner 1200ms linear infinite both;
+    }
+
+    .spin-wrap i {
+        display: block;
+        width: 13px;
+        height: 13px;
+        border-radius: 100%;
+        background-color: #d6eaff;
+        margin: 3px;
+        float: left;
+    }
+
+    .spin-wrap i:nth-child(1) {
+        background-color: #a5cbf2;
+    }
+
+    .spin-wrap i:nth-child(2) {
+        background-color: #90c6fc;
+    }
+
+    .enter-loading span {
+        width: 300px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        margin-left: -150px;
+        font-size: 14px;
+        bottom: -20px;
+        color: #999;
+    }
+
+    @keyframes spinner {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
