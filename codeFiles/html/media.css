@@ -1,0 +1,6 @@
+/*常用媒体查询*/
+@media screen and (min-width: 768px) { /* 适用于平板及以上尺寸 */ }
+@media screen and (max-width: 767px) { /* 适用于手机尺寸 */ }
+@media screen and (min-width: 1024px) { /* 适用于较大屏幕 */ }
+@media (orientation: landscape) { /* 横屏时的样式 */ }
+@media (orientation: portrait) { /* 竖屏时的样式 */ }
