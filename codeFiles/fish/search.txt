@@ -1,0 +1,8 @@
+搜索语法：
+限定关键词："关键词"
+intitle: 关键词
+allintitle: 限定标题里包含多个关键词 A B  
+intext:限定文章内容语法
+指定站点搜索：关键词  site aaa.com
+指定图片大小搜索 ： imagesize 256x256
+搜索文档：filetype:ppt
